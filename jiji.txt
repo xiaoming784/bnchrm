@@ -1,0 +1,118 @@
+CREATE TABLE job(
+id int PRIMARY KEY auto_increment,
+name VARCHAR(30) not NULL COMMENT '岗位名称',
+type INT NOT NULL COMMENT '岗位类型 1管理 2技术 3营销 4市场',
+post int COMMENT '岗位编制'
+)ENGINE=INNODB CHARSET=utf8;
+
+
+CREATE TABLE emp(
+id int PRIMARY KEY auto_increment,
+name VARCHAR(30) not NULL,
+sex INT NOT NULL COMMENT '0女 1男',
+birthday date NOT NULL COMMENT '出生日期',
+id_card VARCHAR(18) NOT NULL COMMENT '身份证号',
+dept int NOT NULL COMMENT '部门id',
+job int NOT NULL COMMENT '岗位id',
+create_data date not NULL COMMENT '入职日期',
+job_date date NOT NULL COMMENT '参加工作日期',
+work_type INT NOT NULL COMMENT '1正式工 2临时工',
+source INT NOT NULL COMMENT '1校招 2社招 3其他',
+politic INT NOT NULL COMMENT '1党员 2预备党员 3团员 4群众',
+folk VARCHAR(10) NOT NULL COMMENT '民族',
+native_place VARCHAR(30) NOT NULL COMMENT '籍贯',
+phone VARCHAR(15) COMMENT '电话',
+email VARCHAR(50) COMMENT '邮件',
+height INT COMMENT '身高（厘米）',
+blood INT COMMENT '血型 1A 2B 3AB 4O 5其他',
+marriage INT COMMENT '婚姻 1未婚 2已婚 3丧偶 4离异',
+birth_place VARCHAR(10) COMMENT '出生地',
+house VARCHAR(30) COMMENT '户口地',
+degree int COMMENT '学历 1高中以下 2大专 3本科 4研究生',
+diploma INT COMMENT '学位 1无学位 2学士 3双学士 4硕士 5博士 6博士后',
+school VARCHAR(100) COMMENT '毕业院校',
+spical VARCHAR(50) COMMENT '专业',
+graduate_date date COMMENT '毕业时间'
+)ENGINE=INNODB auto_increment=10000 CHARSET=utf8;
+
+
+CREATE TABLE probation(
+id int PRIMARY KEY,
+begin_data date not NULL COMMENT '试用期开始日期',
+end_data date not NULL COMMENT '试用期结束日期'
+)ENGINE=INNODB CHARSET=utf8;
+
+
+CREATE TABLE dept_transfer(
+id int PRIMARY KEY COMMENT '员工id',
+tran_type INT not NULL COMMENT '1主动调动 2被动调动 3数据错误',
+tran_reason VARCHAR(50) not NULL COMMENT '调转原因',
+remarks VARCHAR(50) COMMENT '备注',
+tran_date date NOT NULL COMMENT '调动日期'
+)ENGINE=INNODB CHARSET=utf8;
+
+CREATE TABLE job_transfer(
+id int PRIMARY KEY COMMENT '员工id',
+tran_type INT not NULL COMMENT '1升职调动 2降职调动 3数据错误',
+tran_reason VARCHAR(50) not NULL COMMENT '调转原因',
+remarks VARCHAR(50) COMMENT '备注',
+tran_date date NOT NULL COMMENT '调动日期'
+)ENGINE=INNODB CHARSET=utf8;
+
+CREATE TABLE quit(
+id int PRIMARY KEY COMMENT '员工id',
+quit_date date NOT NULL COMMENT '离职日期',
+quit_type INT not NULL COMMENT '1主动辞职 2辞退 3退休 4开除 5试用期未通过',
+departure VARCHAR(50) not NULL COMMENT '离职去向',
+entering INT NOT NULL COMMENT '0是 1否', 
+remarks VARCHAR(50) COMMENT '备注'
+)ENGINE=INNODB CHARSET=utf8;
+
+CREATE TABLE career(
+id int PRIMARY KEY COMMENT '员工id',
+begin_data date not NULL COMMENT '起始日期',
+end_data date not NULL COMMENT '截止日期',
+unit_name VARCHAR(10) COMMENT '单位名称',
+workers VARCHAR(10) COMMENT '工作内容',
+post VARCHAR(10) COMMENT '担任职务',
+salary INT COMMENT '薪资',
+witness VARCHAR(10) COMMENT '证明人',
+wit_job VARCHAR(10) COMMENT '证明人职务',
+wit_phone VARCHAR(15) COMMENT '证明人电话',
+remarks VARCHAR(50) COMMENT '备注'
+)ENGINE=INNODB CHARSET=utf8;
+
+
+CREATE TABLE famliy(
+id int PRIMARY KEY COMMENT '员工id',
+relationship INT NOT NULL COMMENT '与本人关系 1父亲 2母亲 3配否',
+rela_name VARCHAR(10) NOT NULL COMMENT '亲属姓名',
+unit VARCHAR(10) COMMENT '所在单位',
+post VARCHAR(10) COMMENT '职位',
+phone INT COMMENT '联系电话'
+)ENGINE=INNODB CHARSET=utf8;
+
+
+
+
+<select id="selectByExampleWithQuit" resultMap="WithQuitMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from emp
+      left join quit on emp.id=quit.id
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+
+<association property="department" javaType="com.neuedu.pojo.Quit">
+            <id column="id" property="id"/>
+            <result column="quit_date" property="quitDate"/>
+            <result column="quit_type" property="quitType"/>
+        </association>
