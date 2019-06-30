@@ -1,6 +1,6 @@
 package com.neuedu.pojo;
 
-public class Job extends MyPage{
+public class Job extends MyPage {
     private Integer id;
 
     private String name;

@@ -3,8 +3,6 @@ package com.neuedu.pojo;
 public class Family extends MyPage{
     private Integer id;
 
-    private Integer deptId;
-
     private Integer relationship;
 
     private String relaName;
@@ -13,7 +11,9 @@ public class Family extends MyPage{
 
     private String post;
 
-    private Integer phone;
+    private String phone;
+
+    private Integer deptId;
 
     private String empName;
 
@@ -25,14 +25,6 @@ public class Family extends MyPage{
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
     }
 
     public Integer getRelationship() {
@@ -67,12 +59,20 @@ public class Family extends MyPage{
         this.post = post == null ? null : post.trim();
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
-        this.phone = phone;
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
+    }
+
+    public Integer getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
     }
 
     public String getEmpName() {

@@ -11,4 +11,6 @@ public interface DeptService {
     int add(Dept dept);
     int del(Dept dept);
     int update(Dept dept);
+    List<Dept> getDeptByName(String name);
+
 }

@@ -132,63 +132,63 @@ public class EmpExample {
             addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
-        public Criteria andEmpIdIsNull() {
-            addCriterion("emp_id is null");
+        public Criteria andIdIsNull() {
+            addCriterion("id is null");
             return (Criteria) this;
         }
 
-        public Criteria andEmpIdIsNotNull() {
-            addCriterion("emp_id is not null");
+        public Criteria andIdIsNotNull() {
+            addCriterion("id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEmpIdEqualTo(Integer value) {
-            addCriterion("emp_id =", value, "empId");
+        public Criteria andIdEqualTo(Integer value) {
+            addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andEmpIdNotEqualTo(Integer value) {
-            addCriterion("emp_id <>", value, "empId");
+        public Criteria andIdNotEqualTo(Integer value) {
+            addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andEmpIdGreaterThan(Integer value) {
-            addCriterion("emp_id >", value, "empId");
+        public Criteria andIdGreaterThan(Integer value) {
+            addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andEmpIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("emp_id >=", value, "empId");
+        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andEmpIdLessThan(Integer value) {
-            addCriterion("emp_id <", value, "empId");
+        public Criteria andIdLessThan(Integer value) {
+            addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andEmpIdLessThanOrEqualTo(Integer value) {
-            addCriterion("emp_id <=", value, "empId");
+        public Criteria andIdLessThanOrEqualTo(Integer value) {
+            addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andEmpIdIn(List<Integer> values) {
-            addCriterion("emp_id in", values, "empId");
+        public Criteria andIdIn(List<Integer> values) {
+            addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andEmpIdNotIn(List<Integer> values) {
-            addCriterion("emp_id not in", values, "empId");
+        public Criteria andIdNotIn(List<Integer> values) {
+            addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andEmpIdBetween(Integer value1, Integer value2) {
-            addCriterion("emp_id between", value1, value2, "empId");
+        public Criteria andIdBetween(Integer value1, Integer value2) {
+            addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andEmpIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("emp_id not between", value1, value2, "empId");
+        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
 
@@ -1912,63 +1912,63 @@ public class EmpExample {
             return (Criteria) this;
         }
 
-        public Criteria andResultsIsNull() {
-            addCriterion("results is null");
+        public Criteria andTrialStatusIsNull() {
+            addCriterion("trial_status is null");
             return (Criteria) this;
         }
 
-        public Criteria andResultsIsNotNull() {
-            addCriterion("results is not null");
+        public Criteria andTrialStatusIsNotNull() {
+            addCriterion("trial_status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andResultsEqualTo(Integer value) {
-            addCriterion("results =", value, "results");
+        public Criteria andTrialStatusEqualTo(Integer value) {
+            addCriterion("trial_status =", value, "trialStatus");
             return (Criteria) this;
         }
 
-        public Criteria andResultsNotEqualTo(Integer value) {
-            addCriterion("results <>", value, "results");
+        public Criteria andTrialStatusNotEqualTo(Integer value) {
+            addCriterion("trial_status <>", value, "trialStatus");
             return (Criteria) this;
         }
 
-        public Criteria andResultsGreaterThan(Integer value) {
-            addCriterion("results >", value, "results");
+        public Criteria andTrialStatusGreaterThan(Integer value) {
+            addCriterion("trial_status >", value, "trialStatus");
             return (Criteria) this;
         }
 
-        public Criteria andResultsGreaterThanOrEqualTo(Integer value) {
-            addCriterion("results >=", value, "results");
+        public Criteria andTrialStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("trial_status >=", value, "trialStatus");
             return (Criteria) this;
         }
 
-        public Criteria andResultsLessThan(Integer value) {
-            addCriterion("results <", value, "results");
+        public Criteria andTrialStatusLessThan(Integer value) {
+            addCriterion("trial_status <", value, "trialStatus");
             return (Criteria) this;
         }
 
-        public Criteria andResultsLessThanOrEqualTo(Integer value) {
-            addCriterion("results <=", value, "results");
+        public Criteria andTrialStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("trial_status <=", value, "trialStatus");
             return (Criteria) this;
         }
 
-        public Criteria andResultsIn(List<Integer> values) {
-            addCriterion("results in", values, "results");
+        public Criteria andTrialStatusIn(List<Integer> values) {
+            addCriterion("trial_status in", values, "trialStatus");
             return (Criteria) this;
         }
 
-        public Criteria andResultsNotIn(List<Integer> values) {
-            addCriterion("results not in", values, "results");
+        public Criteria andTrialStatusNotIn(List<Integer> values) {
+            addCriterion("trial_status not in", values, "trialStatus");
             return (Criteria) this;
         }
 
-        public Criteria andResultsBetween(Integer value1, Integer value2) {
-            addCriterion("results between", value1, value2, "results");
+        public Criteria andTrialStatusBetween(Integer value1, Integer value2) {
+            addCriterion("trial_status between", value1, value2, "trialStatus");
             return (Criteria) this;
         }
 
-        public Criteria andResultsNotBetween(Integer value1, Integer value2) {
-            addCriterion("results not between", value1, value2, "results");
+        public Criteria andTrialStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("trial_status not between", value1, value2, "trialStatus");
             return (Criteria) this;
         }
     }

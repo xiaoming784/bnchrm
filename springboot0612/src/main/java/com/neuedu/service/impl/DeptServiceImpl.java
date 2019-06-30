@@ -15,6 +15,7 @@ import java.util.List;
 @Service
 public class DeptServiceImpl implements DeptService {
     @Resource
+
     DeptMapper deptMapper;
     @Override
     public List<Dept> getDepts(Dept dept) {
@@ -32,6 +33,7 @@ public class DeptServiceImpl implements DeptService {
     @Override
     public List<Dept> getAll(Dept dept) {
         DeptExample deptExample = new DeptExample();
+        deptExample.createCriteria().andActiveEqualTo(1);
         return deptMapper.selectByExample(deptExample);
     }
 
@@ -54,5 +56,14 @@ public class DeptServiceImpl implements DeptService {
     @Override
     public int update(Dept dept) {
         return deptMapper.updateByPrimaryKeySelective(dept);
+    }
+
+    @Override
+    public List<Dept> getDeptByName(String name) {
+        DeptExample deptExample = new DeptExample();
+        DeptExample.Criteria criteria = deptExample.createCriteria();
+        criteria.andNameLike("%" + name +"%");
+        List<Dept> depts = deptMapper.selectByExample(deptExample);
+        return depts;
     }
 }

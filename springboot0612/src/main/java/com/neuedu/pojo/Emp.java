@@ -3,7 +3,7 @@ package com.neuedu.pojo;
 import java.util.Date;
 
 public class Emp extends MyPage{
-    private Integer empId;
+    private Integer id;
 
     private String name;
 
@@ -59,14 +59,14 @@ public class Emp extends MyPage{
 
     private Date trialEnd;
 
-    private Integer results;
+    private Integer trialStatus;
 
-    public Integer getEmpId() {
-        return empId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setEmpId(Integer empId) {
-        this.empId = empId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -285,12 +285,11 @@ public class Emp extends MyPage{
         this.trialEnd = trialEnd;
     }
 
-    public Integer getResults() {
-        return results;
+    public Integer getTrialStatus() {
+        return trialStatus;
     }
 
-    public void setResults(Integer results) {
-        this.results = results;
+    public void setTrialStatus(Integer trialStatus) {
+        this.trialStatus = trialStatus;
     }
-
 }
