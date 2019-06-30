@@ -31,7 +31,12 @@
         label="部门名称"
         width="120">
         </el-table-column>
-        <el-table-column prop="type" label="部门类型" width="120" :formatter="typeformat"></el-table-column>
+        <el-table-column
+        prop="type"
+        label="部门类型"
+        width="120"
+        :formatter="typeformat">
+        </el-table-column>
         <el-table-column
         prop="phone"
         label="电话"
@@ -156,10 +161,11 @@
             });
         },
         del(row){
+            console.log(row.active);
             this.delete("dept/del",row.id,row.active);
         },
         deltext(active){
-            return active==1?"删除":"恢复"
+            return active==1?"删除":"恢复";
         }
     }
   }

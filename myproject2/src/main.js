@@ -39,7 +39,7 @@ Vue.prototype.delete=function(url,id,status){
     mypublic.get(url,(result)=>{
       this.$message({
         showClose: true,
-        message: 'success',
+        message: result.message,
         type: 'success'
       });
       this.reload();

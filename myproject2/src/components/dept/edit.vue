@@ -6,8 +6,8 @@
         </el-form-item>
         <el-form-item label="部门类型" prop="type">
             <el-select v-model="ruleForm.type" placeholder="请选择活动区域">
-                <el-option label="公司" :value="0"></el-option>
-                <el-option label="部门" :value="1"></el-option>
+                <el-option label="公司" value="0"></el-option>
+                <el-option label="部门" value="1"></el-option>
             </el-select>
         </el-form-item>
         <el-form-item label="电话" prop="phone">

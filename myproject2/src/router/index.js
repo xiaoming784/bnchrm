@@ -2,11 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/components/index'
 import Dept from '@/components/dept/list'
-import Job from '@/components/job/list'
 import Emp from '@/components/emp/list'
-import Probation from '@/components/probation/list'
-import DeptMob from '@/components/deptMob/list'
-import JobMob from '@/components/jobMob/list'
+import TalentPool from '@/components/talentPool/list'
+import TalentPool2 from '@/components/talentPool2/list'
+import { SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS } from 'constants';
 
 
 Vue.use(Router)
@@ -23,31 +22,18 @@ export default new Router({
             path:'/dept',
             name:'dept',
             component:Dept
-          },
-          {
-            path:'/job',
-            name:'job',
-            component:Job
-          },
-          {
+          },{
             path:'/emp',
             name:'emp',
             component:Emp
-          },
-          {
-            path:'/probation',
-            name:'probation',
-            component:Probation
-          },
-          {
-            path:'/deptMob',
-            name:'deptMob',
-            component:DeptMob
-          },
-          {
-            path:'/jobMob',
-            name:'jobMob',
-            component:JobMob
+          },{
+            path:'/talentPool',
+            name:'talentPool',
+            component:TalentPool
+          },{
+            path:'/talentPool2',
+            name:'talentPool2',
+            component:TalentPool2
           }
         ]
     }
