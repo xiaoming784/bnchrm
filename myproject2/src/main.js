@@ -34,12 +34,37 @@ if (valid) {
 }
 });
 }
+
+Vue.prototype.merge1=mypublic.merge1;
+Vue.prototype.$layer = layer(Vue);
+Vue.prototype.reset=function(formwitness){
+  this.$refs[formwitness].resetFields();
+}
+Vue.prototype.post=function(formwitness,url,params,
+  callback=()=>{
+  this.$layer.closeAll();
+  this.reload()
+  }
+,config={}){
+this.$refs[formwitness].validate((valid) => {
+if (valid) {
+  mypublic.post(url,params,callback,config);
+} else {
+  return false;
+}
+});
+}
+
+
+
+
+
 Vue.prototype.delete=function(url,id,status){
   mypublic.del(id,status,(id,status)=>{
     mypublic.get(url,(result)=>{
       this.$message({
         showClose: true,
-        message: result.message,
+        message: 'success',
         type: 'success'
       });
       this.reload();

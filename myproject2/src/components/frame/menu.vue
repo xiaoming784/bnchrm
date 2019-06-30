@@ -10,13 +10,14 @@
                 <el-submenu index="基本资料维护" >
                     <template slot="title" >基本资料维护</template>
                     <el-menu-item index="部门管理" route="dept">部门管理</el-menu-item>
-                    <el-menu-item index="岗位管理">岗位管理</el-menu-item>
+                    <el-menu-item index="岗位管理" route="job">岗位管理</el-menu-item>
                     <el-menu-item index="员工管理" route="emp">员工管理</el-menu-item>
-                    <el-submenu index="入职离职" >
-                    <template slot="title" >入职离职</template>
-                    <el-menu-item index="员工离职" route="talentPool2">员工离职</el-menu-item>
-                    <el-menu-item index="员工入职" route="talentPool">员工入职</el-menu-item>
                 </el-submenu>
+                <el-submenu index="员工信息管理" >
+                    <template slot="title" >基本资料维护</template>
+                    <el-menu-item index="职业生涯信息" route="career">职业生涯信息</el-menu-item>
+                    <el-menu-item index="外语能力" route="foreign_languages">外语能力</el-menu-item>
+                    <el-menu-item index="家庭信息" route="family">家庭信息</el-menu-item>
                 </el-submenu>
             </el-menu>
         </el-col>

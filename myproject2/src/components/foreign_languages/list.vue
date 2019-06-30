@@ -4,13 +4,11 @@
           <el-row>
               <el-col :span="2"><el-button type="primary" @click="add">添加</el-button></el-col>
               <el-col :span="22">
-                <el-input placeholder="请输入员工名" v-model="search.name" class="input-with-select">
+                <el-input placeholder="请输入员工姓名" v-model="search.empName" class="input-with-select">
                     <el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
                 </el-input>
               </el-col>
-          </el-row>
-           
-            
+          </el-row> 
         </div>
       <el-table
         :data="tableData.list"
@@ -19,35 +17,44 @@
         <el-table-column
         prop="id"
         label="编号"
+        width="120">
+        </el-table-column>
+        <el-table-column
+        prop="empName"
+        label="员工姓名"
         width="150">
         </el-table-column>
         <el-table-column
-        prop="name"
-        label="员工姓名"
-        width="120">
+        prop="deptId"
+        label="所属部门ID"
+        width="150"
+        :formatter="deptidformat">
         </el-table-column>
         <el-table-column
-        prop="sex"
-        label="性别"
+        prop="languages"
+        label="语言种类"
         width="120"
-        :formatter="sexformat">
+        :formatter="typeformat1">
         </el-table-column>
         <el-table-column
-        prop="birthday"
-        label="生日"
-        width="120">
+        prop="proficiency"
+        label="熟练程序"
+        width="120"
+        :formatter="typeformat2">
         </el-table-column>
         <el-table-column
-        prop="idCard"
-        label="身份证号"
-        width="120">
+        prop="active"
+        label="是否有效"
+        width="120"
+        :formatter="activeformat">
         </el-table-column>
-      
+         
         <el-table-column
         label="操作"
         width="100">
         <template slot-scope="scope">
             <el-button @click="edit(scope.row)" type="text" size="small">修改</el-button>
+            <el-button type="text" size="small" @click="del(scope.row)">删除</el-button>
         </template>
         </el-table-column>
     </el-table> 
@@ -63,21 +70,21 @@
 </template>
 
 <script>
-    import EmpDept from '@/components/emp/edit'
+    import EditForeign_Languages from '@/components/foreign_languages/edit'
   export default {
       inject:['reload'],
-      name:"emp",
+      name:"foreign_languages",
     data () {
       return {
           search:{
               active:"",
-              name:""
+              empName:""
           },
           queryParams:{
               pageNo:1,
               pageSize:10,
               active:"",
-              name:""
+              empName:""
           },
           tableData:{}
       }
@@ -96,12 +103,36 @@
     mounted(){},
     methods:{
         getData(){
-            this.get("emp/list",(data)=>{
+            this.get("foreign_languages/list",(data)=>{
                 this.tableData=data;   
             },this.queryParams);
         },
-        sexformat(row, column, cellValue, index){
-            return cellValue==0?"女":"男";
+        deptidformat(row, column, cellValue, index){
+           if(cellValue==0)
+                return "无此部门ID"
+        },
+        typeformat1(row, column, cellValue, index){
+            if(cellValue==1)
+                return "英语"
+            else 
+                return "其他"
+        },
+        typeformat2(row, column, cellValue, index){
+            if(cellValue==0)
+                return "完全不懂"
+            else if(cellValue==1)
+                return "少量"
+            else if(cellValue==2)
+                return "有限"
+            else if(cellValue==3)
+                return "一般"
+            else if(cellValue==4)
+                return "好"
+            else 
+                return "流利"
+        },
+        activeformat(row, column, cellValue, index){
+            return cellValue==0?"失效":"有效";
         },
         changePageNo(i){
             this.queryParams.pageNo=i;
@@ -113,12 +144,12 @@
         add(){
             this.$layer.iframe({
                 content: {
-                    content: EmpDept, //传递的组件对象
+                    content: EditForeign_Languages, //传递的组件对象
                     parent: this,//当前的vue对象
                     data:{}//props
                 },
                 area:['800px','600px'],
-                title: '添加员工',
+                title: '添加岗位',
                 shadeClose: false,
                 shade :true
             });
@@ -126,15 +157,21 @@
         edit(row){
              this.$layer.iframe({
                 content: {
-                    content: EmpDept, //传递的组件对象
+                    content: EditForeign_Languages, //传递的组件对象
                     parent: this,//当前的vue对象
                     data:{id:row.id}//props
                 },
                 area:['800px','600px'],
-                title: '修改员工',
+                title: '修改岗位',
                 shadeClose: false,
                 shade :true
             });
+        },
+        del(row){
+            this.delete("foreign_languages/del",row.id,row.active);
+        },
+        deltext(active){
+            return active==1?"删除":"恢复"
         }
     }
   }

@@ -94,6 +94,7 @@
               active:"",
               name:""
           },
+          
           queryParams:{
               pageNo:1,
               pageSize:10,
@@ -161,11 +162,10 @@
             });
         },
         del(row){
-            console.log(row.active);
             this.delete("dept/del",row.id,row.active);
         },
         deltext(active){
-            return active==1?"删除":"恢复";
+            return active==1?"删除":"恢复"
         }
     }
   }
