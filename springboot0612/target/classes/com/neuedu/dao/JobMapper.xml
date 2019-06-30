@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.dao.JobMapper">
   <resultMap id="BaseResultMap" type="com.neuedu.pojo.Job">
-    <id column="j_id" jdbcType="INTEGER" property="jId" />
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="job_name" jdbcType="VARCHAR" property="jobName" />
     <result column="type" jdbcType="INTEGER" property="type" />
     <result column="person" jdbcType="INTEGER" property="person" />
@@ -66,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    j_id, job_name, type, person
+    id, job_name, type, person
   </sql>
   <select id="selectByExample" parameterType="com.neuedu.pojo.JobExample" resultMap="BaseResultMap">
     select
@@ -86,11 +86,11 @@
     select 
     <include refid="Base_Column_List" />
     from job
-    where j_id = #{jId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from job
-    where j_id = #{jId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.neuedu.pojo.JobExample">
     delete from job
@@ -99,16 +99,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.neuedu.pojo.Job">
-    insert into job (j_id, job_name, type,
+    insert into job (id, job_name, type, 
       person)
-    values (#{jId,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER},
+    values (#{id,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
       #{person,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.neuedu.pojo.Job">
     insert into job
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="jId != null">
-        j_id,
+      <if test="id != null">
+        id,
       </if>
       <if test="jobName != null">
         job_name,
@@ -121,8 +121,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="jId != null">
-        #{jId,jdbcType=INTEGER},
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="jobName != null">
         #{jobName,jdbcType=VARCHAR},
@@ -144,8 +144,8 @@
   <update id="updateByExampleSelective" parameterType="map">
     update job
     <set>
-      <if test="record.jId != null">
-        j_id = #{record.jId,jdbcType=INTEGER},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.jobName != null">
         job_name = #{record.jobName,jdbcType=VARCHAR},
@@ -163,7 +163,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update job
-    set j_id = #{record.jId,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=INTEGER},
       job_name = #{record.jobName,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=INTEGER},
       person = #{record.person,jdbcType=INTEGER}
@@ -184,13 +184,13 @@
         person = #{person,jdbcType=INTEGER},
       </if>
     </set>
-    where j_id = #{jId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.neuedu.pojo.Job">
     update job
     set job_name = #{jobName,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},
       person = #{person,jdbcType=INTEGER}
-    where j_id = #{jId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

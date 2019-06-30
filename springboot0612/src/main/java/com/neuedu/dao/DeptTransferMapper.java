@@ -18,10 +18,6 @@ public interface DeptTransferMapper {
 
     List<DeptTransfer> selectByExample(DeptTransferExample example);
 
-    List<DeptTransfer> selectByExampleWithEmp(DeptTransferExample example);
-
-    List<DeptTransfer> selectByExampleWithEmpAfter(DeptTransferExample example);
-
     DeptTransfer selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") DeptTransfer record, @Param("example") DeptTransferExample example);

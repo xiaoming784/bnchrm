@@ -3,13 +3,13 @@ package com.neuedu.pojo;
 import java.util.Date;
 
 public class Dept extends MyPage{
-    private Integer dId;
+    private Integer id;
 
     private String deptName;
 
     private Integer type;
 
-    private String deptPhone;
+    private String phone;
 
     private String fax;
 
@@ -21,12 +21,12 @@ public class Dept extends MyPage{
 
     private Integer active;
 
-    public Integer getdId() {
-        return dId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setdId(Integer dId) {
-        this.dId = dId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDeptName() {
@@ -45,12 +45,12 @@ public class Dept extends MyPage{
         this.type = type;
     }
 
-    public String getDeptPhone() {
-        return deptPhone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setDeptPhone(String deptPhone) {
-        this.deptPhone = deptPhone == null ? null : deptPhone.trim();
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getFax() {

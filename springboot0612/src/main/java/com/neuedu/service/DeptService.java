@@ -7,7 +7,7 @@ import java.util.List;
 public interface DeptService {
     List<Dept> getDepts(Dept dept);
     List<Dept> getAll(Dept dept);
-    Dept getDeptById(int dId);
+    Dept getDeptById(int id);
     int add(Dept dept);
     int del(Dept dept);
     int update(Dept dept);

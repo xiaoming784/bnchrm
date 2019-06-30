@@ -18,8 +18,6 @@ public interface JobTransferMapper {
 
     List<JobTransfer> selectByExample(JobTransferExample example);
 
-    List<JobTransfer> selectByExampleWithEmp(JobTransferExample example);
-
     JobTransfer selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") JobTransfer record, @Param("example") JobTransferExample example);

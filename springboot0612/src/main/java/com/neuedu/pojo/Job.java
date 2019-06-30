@@ -1,7 +1,7 @@
 package com.neuedu.pojo;
 
 public class Job extends MyPage{
-    private Integer jId;
+    private Integer id;
 
     private String jobName;
 
@@ -9,12 +9,12 @@ public class Job extends MyPage{
 
     private Integer person;
 
-    public Integer getjId() {
-        return jId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setjId(Integer jId) {
-        this.jId = jId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getJobName() {

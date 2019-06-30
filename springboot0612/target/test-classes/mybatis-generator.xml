@@ -13,7 +13,7 @@
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://127.0.0.1:3306/db?useUnicode=true&amp;characterEncoding=utf8"
                         userId="root"
-                        password="root">
+                        password="love">
         </jdbcConnection>
 
 
@@ -45,7 +45,7 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table tableName="user"></table>
+        <table tableName="job"></table>
         <!-- 有些表的字段需要指定java类型
          <table schema="" tableName="">
             <columnOverride column="" javaType="" />

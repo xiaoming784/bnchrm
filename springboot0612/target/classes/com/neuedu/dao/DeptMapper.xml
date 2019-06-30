@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.dao.DeptMapper">
   <resultMap id="BaseResultMap" type="com.neuedu.pojo.Dept">
-    <id column="d_id" jdbcType="INTEGER" property="dId" />
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
     <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="dept_phone" jdbcType="VARCHAR" property="deptPhone" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="fax" jdbcType="VARCHAR" property="fax" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="parent_id" jdbcType="INTEGER" property="parentId" />
@@ -71,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    d_id, dept_name, type, dept_phone, fax, description, parent_id, create_date, active
+    id, dept_name, type, phone, fax, description, parent_id, create_date, active
   </sql>
   <select id="selectByExample" parameterType="com.neuedu.pojo.DeptExample" resultMap="BaseResultMap">
     select
@@ -91,11 +91,11 @@
     select 
     <include refid="Base_Column_List" />
     from dept
-    where d_id = #{d_id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from dept
-    where d_id = #{d_id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.neuedu.pojo.DeptExample">
     delete from dept
@@ -104,20 +104,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.neuedu.pojo.Dept">
-    insert into dept (d_id, dept_name, type,
-      dept_phone, fax, description, 
+    insert into dept (id, dept_name, type, 
+      phone, fax, description, 
       parent_id, create_date, active
       )
-    values (#{dId,jdbcType=INTEGER}, #{deptName,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER},
-      #{deptPhone,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{deptName,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{phone,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
       #{parentId,jdbcType=INTEGER}, #{createDate,jdbcType=DATE}, #{active,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.neuedu.pojo.Dept">
     insert into dept
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="dId != null">
-        d_id,
+      <if test="id != null">
+        id,
       </if>
       <if test="deptName != null">
         dept_name,
@@ -125,8 +125,8 @@
       <if test="type != null">
         type,
       </if>
-      <if test="deptPhone != null">
-        dept_phone,
+      <if test="phone != null">
+        phone,
       </if>
       <if test="fax != null">
         fax,
@@ -145,8 +145,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="dId != null">
-        #{dId,jdbcType=INTEGER},
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="deptName != null">
         #{deptName,jdbcType=VARCHAR},
@@ -154,8 +154,8 @@
       <if test="type != null">
         #{type,jdbcType=INTEGER},
       </if>
-      <if test="deptPhone != null">
-        #{deptPhone,jdbcType=VARCHAR},
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
       </if>
       <if test="fax != null">
         #{fax,jdbcType=VARCHAR},
@@ -183,8 +183,8 @@
   <update id="updateByExampleSelective" parameterType="map">
     update dept
     <set>
-      <if test="record.dId != null">
-        d_id = #{record.dId,jdbcType=INTEGER},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.deptName != null">
         dept_name = #{record.deptName,jdbcType=VARCHAR},
@@ -192,8 +192,8 @@
       <if test="record.type != null">
         type = #{record.type,jdbcType=INTEGER},
       </if>
-      <if test="record.deptPhone != null">
-        dept_phone = #{record.deptPhone,jdbcType=VARCHAR},
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
       </if>
       <if test="record.fax != null">
         fax = #{record.fax,jdbcType=VARCHAR},
@@ -217,10 +217,10 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update dept
-    set d_id = #{record.dId,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=INTEGER},
       dept_name = #{record.deptName,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=INTEGER},
-      dept_phone = #{record.deptPhone,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
       fax = #{record.fax,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
       parent_id = #{record.parentId,jdbcType=INTEGER},
@@ -239,8 +239,8 @@
       <if test="type != null">
         type = #{type,jdbcType=INTEGER},
       </if>
-      <if test="deptPhone != null">
-        dept_phone = #{deptPhone,jdbcType=VARCHAR},
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="fax != null">
         fax = #{fax,jdbcType=VARCHAR},
@@ -258,18 +258,18 @@
         active = #{active,jdbcType=INTEGER},
       </if>
     </set>
-    where d_id = #{dId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.neuedu.pojo.Dept">
     update dept
     set dept_name = #{deptName,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},
-      dept_phone = #{deptPhone,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
       fax = #{fax,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
       parent_id = #{parentId,jdbcType=INTEGER},
       create_date = #{createDate,jdbcType=DATE},
       active = #{active,jdbcType=INTEGER}
-    where d_id = #{dId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

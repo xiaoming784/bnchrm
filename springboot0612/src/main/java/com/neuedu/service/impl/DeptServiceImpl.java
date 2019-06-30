@@ -25,18 +25,20 @@ public class DeptServiceImpl implements DeptService {
             criteria.andDeptNameLike("%"+dept.getDeptName()+"%");
         if(dept.getActive()!=null)
             criteria.andActiveEqualTo(dept.getActive());
+
         return deptMapper.selectByExample(deptExample);
     }
 
     @Override
     public List<Dept> getAll(Dept dept) {
         DeptExample deptExample = new DeptExample();
+        deptExample.createCriteria().andActiveEqualTo(1);
         return deptMapper.selectByExample(deptExample);
     }
 
     @Override
-    public Dept getDeptById(int dId) {
-        return deptMapper.selectByPrimaryKey(dId);
+    public Dept getDeptById(int id) {
+        return deptMapper.selectByPrimaryKey(id);
     }
 
     @Override

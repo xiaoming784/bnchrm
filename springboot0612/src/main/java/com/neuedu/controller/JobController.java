@@ -1,6 +1,7 @@
 package com.neuedu.controller;
 
 import com.github.pagehelper.PageInfo;
+
 import com.neuedu.pojo.Job;
 import com.neuedu.service.JobService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +19,8 @@ public class JobController {
     JobService jobService;
     @GetMapping("/list")
     public PageInfo<Job> getDept(Job job){
-        List<Job> jobs =jobService.getJobs(job);
-        PageInfo<Job> pageInfo = new PageInfo<>(jobs);
+        List<Job> depts =jobService.getJobs(job);
+        PageInfo<Job> pageInfo = new PageInfo<>(depts);
         return pageInfo;
     }
     @GetMapping("/getAll")
@@ -39,7 +40,7 @@ public class JobController {
         return jobService.update(job);
     }
     @GetMapping("/getOne")
-    public Job getOne(Integer jId){
-        return jobService.getJobById(jId);
+    public Job getOne(Integer id){
+        return jobService.getJobById(id);
     }
 }

@@ -2,7 +2,7 @@ package com.neuedu.pojo;
 
 import java.util.Date;
 
-public class JobTransfer extends MyPage{
+public class JobTransfer {
     private Integer id;
 
     private Integer empId;
@@ -18,36 +18,6 @@ public class JobTransfer extends MyPage{
     private String remarks;
 
     private Date tranDate;
-
-    private Date tranDateSearch;
-
-    public Date getTranDateSearch() {
-        return tranDateSearch;
-    }
-
-    public void setTranDateSearch(Date tranDateSearch) {
-        this.tranDateSearch = tranDateSearch;
-    }
-
-    private Emp emp;
-
-    private Job job;
-
-    public Job getJob() {
-        return job;
-    }
-
-    public void setJob(Job job) {
-        this.job = job;
-    }
-
-    public Emp getEmp() {
-        return emp;
-    }
-
-    public void setEmp(Emp emp) {
-        this.emp = emp;
-    }
 
     public Integer getId() {
         return id;

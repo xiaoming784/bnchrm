@@ -3,7 +3,7 @@ package com.neuedu.pojo;
 import java.util.Date;
 
 public class Emp extends MyPage{
-    private Integer eId;
+    private Integer id;
 
     private String name;
 
@@ -13,13 +13,11 @@ public class Emp extends MyPage{
 
     private String idCard;
 
-    private Integer deptId;
+    private Integer dept;
 
-    private Integer jobId;
+    private Integer job;
 
     private Date createData;
-
-    private Date createDataSearch;
 
     private Date jobDate;
 
@@ -63,40 +61,52 @@ public class Emp extends MyPage{
 
     private Integer results;
 
-    private Dept dept;
+    private Dept deptInfo;
 
-    private Job job;
+    private Job jobInfo;
 
-    public Job getJob() {
-        return job;
+    private HandleTrial handleTrial;
+
+    private DeptTransfer deptTransfer;
+
+    public DeptTransfer getDeptTransfer() {
+        return deptTransfer;
     }
 
-    public void setJob(Job job) {
-        this.job = job;
+    public void setDeptTransfer(DeptTransfer deptTransfer) {
+        this.deptTransfer = deptTransfer;
     }
 
-    public Dept getDept() {
-        return dept;
+    public HandleTrial getHandleTrial() {
+        return handleTrial;
     }
 
-    public void setDept(Dept dept) {
-        this.dept = dept;
+    public void setHandleTrial(HandleTrial handleTrial) {
+        this.handleTrial = handleTrial;
     }
 
-    public Date getCreateDataSearch() {
-        return createDataSearch;
+    public Job getJobInfo() {
+        return jobInfo;
     }
 
-    public void setCreateDataSearch(Date createDataSearch) {
-        this.createDataSearch = createDataSearch;
+    public void setJobInfo(Job jobInfo) {
+        this.jobInfo = jobInfo;
     }
 
-    public Integer geteId() {
-        return eId;
+    public Dept getDeptInfo() {
+        return deptInfo;
     }
 
-    public void seteId(Integer eId) {
-        this.eId = eId;
+    public void setDeptInfo(Dept deptInfo) {
+        this.deptInfo = deptInfo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -131,20 +141,20 @@ public class Emp extends MyPage{
         this.idCard = idCard == null ? null : idCard.trim();
     }
 
-    public Integer getDeptId() {
-        return deptId;
+    public Integer getDept() {
+        return dept;
     }
 
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
+    public void setDept(Integer dept) {
+        this.dept = dept;
     }
 
-    public Integer getJobId() {
-        return jobId;
+    public Integer getJob() {
+        return job;
     }
 
-    public void setJobId(Integer jobId) {
-        this.jobId = jobId;
+    public void setJob(Integer job) {
+        this.job = job;
     }
 
     public Date getCreateData() {

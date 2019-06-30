@@ -9,7 +9,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -28,13 +27,13 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public List<Job> getAll(Job job) {
-        JobExample jobExample = new JobExample();
-        return jobMapper.selectByExample(jobExample);
+        JobExample deptExample = new JobExample();
+        return jobMapper.selectByExample(deptExample);
     }
 
     @Override
-    public Job getJobById(int jId) {
-        return jobMapper.selectByPrimaryKey(jId);
+    public Job getJobById(int id) {
+        return jobMapper.selectByPrimaryKey(id);
     }
 
     @Override
@@ -51,4 +50,5 @@ public class JobServiceImpl implements JobService {
     public int update(Job job) {
         return jobMapper.updateByPrimaryKeySelective(job);
     }
+
 }
