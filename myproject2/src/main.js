@@ -8,11 +8,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 import mypublic from '@/public/mypublicjs'
 import axios from 'axios'
 import layer from 'vue-layer'
-import Blob from './vendor/Blob'
-import Export2Excel from './vendor/Export2Excel'
 
 axios.defaults.baseURL="http://127.0.0.1/";
-Vue.prototype.$axios=axios;
+Vue.prototype.axios=axios;
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.prototype.get=mypublic.get;
@@ -36,16 +34,16 @@ if (valid) {
 }
 });
 }
-Vue.prototype.delete=function(url,dId,status){
-  mypublic.del(dId,status,(dId,status)=>{
+Vue.prototype.delete=function(url,id,status){
+  mypublic.del(id,status,(id,status)=>{
     mypublic.get(url,(result)=>{
       this.$message({
         showClose: true,
-        message: result.message,
+        message: 'success',
         type: 'success'
       });
       this.reload();
-    },{dId:dId,active:status});
+    },{id:id,active:status});
   })
 }
 

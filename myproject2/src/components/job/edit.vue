@@ -1,8 +1,8 @@
 <template>
   <div>
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-        <el-form-item label="岗位名称" prop="jobName">
-            <el-input v-model="ruleForm.jobName"></el-input>
+        <el-form-item label="岗位名称" prop="name">
+            <el-input v-model="ruleForm.name"></el-input>
         </el-form-item>
         <el-form-item label="岗位类型" prop="type">
             <el-select v-model="ruleForm.type" placeholder="请选择岗位类型">
@@ -27,18 +27,18 @@
 <script>
   export default {
       inject:['reload'],
-      props:["jId"],
+      props:["id"],
     data () {
         name:"jobedit"
       return {
           ruleForm:{
-            jId:"",
-            jobName:"",
+            id:"",
+            name:"",
             type:"",
             person:""
           },
           rules: {
-            jobName: [
+            name: [
                 { required: true, message: '请输入部门名称', trigger: 'blur' },
                 { min: 1, max: 30, message: '长度在 1 到 30 个字符', trigger: 'blur' }
             ],
@@ -55,11 +55,11 @@
       }
     },
     created(){
-        if(this.jId){
+        if(this.id){
              this.get("job/getOne",(data)=>{
                 this.ruleForm=data;
                 console.log(this.ruleForm);
-            },{jId:this.jId}); 
+            },{id:this.id}); 
             this.buttonText="修改"
         }
            
@@ -73,7 +73,7 @@
         },
         submitForm(formName){
             let url="";
-            if(this.jId)
+            if(this.id)
                 url="job/update";
             else
                 url="job/add";

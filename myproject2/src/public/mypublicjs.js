@@ -24,10 +24,9 @@ export default {
     }
     let myloading= Loading.service();
      axios.post(url,formData,config).then(result=>{
-      let type=result.data.code==1?"success":"error";
       Message({
-        message: result.data.message,
-        type:type
+        message: "success",
+        type:"success"
       });
       callback(result.data);
     }).catch(err=>{

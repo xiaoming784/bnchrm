@@ -4,11 +4,13 @@
           <el-row>
               <el-col :span="2"><el-button type="primary" @click="add">添加</el-button></el-col>
               <el-col :span="22">
-                <el-input placeholder="请输入岗位名称" v-model="search.name" class="input-with-select">
+                <el-input placeholder="请输入员工名" v-model="search.name" class="input-with-select">
                     <el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
                 </el-input>
               </el-col>
-          </el-row> 
+          </el-row>
+           
+            
         </div>
       <el-table
         :data="tableData.list"
@@ -21,18 +23,23 @@
         </el-table-column>
         <el-table-column
         prop="name"
-        label="岗位名称"
+        label="员工姓名"
         width="120">
         </el-table-column>
         <el-table-column
-        prop="type"
-        label="岗位类型"
+        prop="sex"
+        label="性别"
         width="120"
-        :formatter="typeformat">
+        :formatter="sexformat">
         </el-table-column>
         <el-table-column
-        prop="person"
-        label="编制数"
+        prop="birthday"
+        label="生日"
+        width="120">
+        </el-table-column>
+        <el-table-column
+        prop="idCard"
+        label="身份证号"
         width="120">
         </el-table-column>
       
@@ -56,18 +63,20 @@
 </template>
 
 <script>
-    import EditJob from '@/components/job/edit'
+    import EmpDept from '@/components/emp/edit'
   export default {
       inject:['reload'],
-      name:"job",
+      name:"emp",
     data () {
       return {
           search:{
+              active:"",
               name:""
           },
           queryParams:{
               pageNo:1,
               pageSize:10,
+              active:"",
               name:""
           },
           tableData:{}
@@ -87,19 +96,12 @@
     mounted(){},
     methods:{
         getData(){
-            this.get("job/list",(data)=>{
+            this.get("emp/list",(data)=>{
                 this.tableData=data;   
             },this.queryParams);
         },
-        typeformat(row, column, cellValue, index){
-            if(cellValue==1)
-                return "管理"
-            else if(cellValue==2)
-                return "技术"
-            else if(cellValue==3)
-                return "市场"
-            else 
-                return "营销"
+        sexformat(row, column, cellValue, index){
+            return cellValue==0?"女":"男";
         },
         changePageNo(i){
             this.queryParams.pageNo=i;
@@ -111,12 +113,12 @@
         add(){
             this.$layer.iframe({
                 content: {
-                    content: EditJob, //传递的组件对象
+                    content: EmpDept, //传递的组件对象
                     parent: this,//当前的vue对象
                     data:{}//props
                 },
                 area:['800px','600px'],
-                title: '添加岗位',
+                title: '添加员工',
                 shadeClose: false,
                 shade :true
             });
@@ -124,12 +126,12 @@
         edit(row){
              this.$layer.iframe({
                 content: {
-                    content: EditJob, //传递的组件对象
+                    content: EmpDept, //传递的组件对象
                     parent: this,//当前的vue对象
                     data:{id:row.id}//props
                 },
                 area:['800px','600px'],
-                title: '修改岗位',
+                title: '修改员工',
                 shadeClose: false,
                 shade :true
             });
