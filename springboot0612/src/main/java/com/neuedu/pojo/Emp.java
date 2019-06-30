@@ -3,7 +3,7 @@ package com.neuedu.pojo;
 import java.util.Date;
 
 public class Emp extends MyPage{
-    private Integer id;
+    private Integer empId;
 
     private String name;
 
@@ -61,52 +61,12 @@ public class Emp extends MyPage{
 
     private Integer results;
 
-    private Dept deptInfo;
-
-    private Job jobInfo;
-
-    private HandleTrial handleTrial;
-
-    private DeptTransfer deptTransfer;
-
-    public DeptTransfer getDeptTransfer() {
-        return deptTransfer;
+    public Integer getEmpId() {
+        return empId;
     }
 
-    public void setDeptTransfer(DeptTransfer deptTransfer) {
-        this.deptTransfer = deptTransfer;
-    }
-
-    public HandleTrial getHandleTrial() {
-        return handleTrial;
-    }
-
-    public void setHandleTrial(HandleTrial handleTrial) {
-        this.handleTrial = handleTrial;
-    }
-
-    public Job getJobInfo() {
-        return jobInfo;
-    }
-
-    public void setJobInfo(Job jobInfo) {
-        this.jobInfo = jobInfo;
-    }
-
-    public Dept getDeptInfo() {
-        return deptInfo;
-    }
-
-    public void setDeptInfo(Dept deptInfo) {
-        this.deptInfo = deptInfo;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public void setEmpId(Integer empId) {
+        this.empId = empId;
     }
 
     public String getName() {
@@ -332,4 +292,5 @@ public class Emp extends MyPage{
     public void setResults(Integer results) {
         this.results = results;
     }
+
 }

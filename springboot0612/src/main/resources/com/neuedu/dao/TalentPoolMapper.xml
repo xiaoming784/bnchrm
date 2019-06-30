@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.dao.TalentPoolMapper">
+  <resultMap id="BaseResultMap" type="com.neuedu.pojo.TalentPool">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="emp_id" jdbcType="INTEGER" property="empId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="dept" jdbcType="INTEGER" property="dept" />
+    <result column="job" jdbcType="INTEGER" property="job" />
+    <result column="create_data" jdbcType="DATE" property="createData" />
+    <result column="job_date" jdbcType="DATE" property="jobDate" />
+    <result column="work_type" jdbcType="INTEGER" property="workType" />
+    <result column="source" jdbcType="INTEGER" property="source" />
+    <result column="politic" jdbcType="INTEGER" property="politic" />
+    <result column="folk" jdbcType="VARCHAR" property="folk" />
+    <result column="native_place" jdbcType="VARCHAR" property="nativePlace" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+    <result column="blood" jdbcType="INTEGER" property="blood" />
+    <result column="marriage" jdbcType="INTEGER" property="marriage" />
+    <result column="birth_place" jdbcType="VARCHAR" property="birthPlace" />
+    <result column="house" jdbcType="VARCHAR" property="house" />
+    <result column="degree" jdbcType="INTEGER" property="degree" />
+    <result column="diploma" jdbcType="INTEGER" property="diploma" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="spical" jdbcType="VARCHAR" property="spical" />
+    <result column="graduate_date" jdbcType="DATE" property="graduateDate" />
+    <result column="active" jdbcType="INTEGER" property="active" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, emp_id, name, sex, birthday, id_card, dept, job, create_data, job_date, work_type, 
+    source, politic, folk, native_place, phone, email, height, blood, marriage, birth_place, 
+    house, degree, diploma, school, spical, graduate_date, active
+  </sql>
+  <select id="selectByExample" parameterType="com.neuedu.pojo.TalentPoolExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from talent_pool
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from talent_pool
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from talent_pool
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neuedu.pojo.TalentPoolExample">
+    delete from talent_pool
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neuedu.pojo.TalentPool">
+    insert into talent_pool (id, emp_id, name, 
+      sex, birthday, id_card, 
+      dept, job, create_data, 
+      job_date, work_type, source, 
+      politic, folk, native_place, 
+      phone, email, height, 
+      blood, marriage, birth_place, 
+      house, degree, diploma, 
+      school, spical, graduate_date, 
+      active)
+    values (#{id,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}, #{idCard,jdbcType=VARCHAR}, 
+      #{dept,jdbcType=INTEGER}, #{job,jdbcType=INTEGER}, #{createData,jdbcType=DATE}, 
+      #{jobDate,jdbcType=DATE}, #{workType,jdbcType=INTEGER}, #{source,jdbcType=INTEGER}, 
+      #{politic,jdbcType=INTEGER}, #{folk,jdbcType=VARCHAR}, #{nativePlace,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{height,jdbcType=INTEGER}, 
+      #{blood,jdbcType=INTEGER}, #{marriage,jdbcType=INTEGER}, #{birthPlace,jdbcType=VARCHAR}, 
+      #{house,jdbcType=VARCHAR}, #{degree,jdbcType=INTEGER}, #{diploma,jdbcType=INTEGER}, 
+      #{school,jdbcType=VARCHAR}, #{spical,jdbcType=VARCHAR}, #{graduateDate,jdbcType=DATE}, 
+      #{active,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.neuedu.pojo.TalentPool">
+    insert into talent_pool
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="empId != null">
+        emp_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="idCard != null">
+        id_card,
+      </if>
+      <if test="dept != null">
+        dept,
+      </if>
+      <if test="job != null">
+        job,
+      </if>
+      <if test="createData != null">
+        create_data,
+      </if>
+      <if test="jobDate != null">
+        job_date,
+      </if>
+      <if test="workType != null">
+        work_type,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="politic != null">
+        politic,
+      </if>
+      <if test="folk != null">
+        folk,
+      </if>
+      <if test="nativePlace != null">
+        native_place,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="blood != null">
+        blood,
+      </if>
+      <if test="marriage != null">
+        marriage,
+      </if>
+      <if test="birthPlace != null">
+        birth_place,
+      </if>
+      <if test="house != null">
+        house,
+      </if>
+      <if test="degree != null">
+        degree,
+      </if>
+      <if test="diploma != null">
+        diploma,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+      <if test="spical != null">
+        spical,
+      </if>
+      <if test="graduateDate != null">
+        graduate_date,
+      </if>
+      <if test="active != null">
+        active,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null">
+        #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=INTEGER},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=INTEGER},
+      </if>
+      <if test="createData != null">
+        #{createData,jdbcType=DATE},
+      </if>
+      <if test="jobDate != null">
+        #{jobDate,jdbcType=DATE},
+      </if>
+      <if test="workType != null">
+        #{workType,jdbcType=INTEGER},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=INTEGER},
+      </if>
+      <if test="politic != null">
+        #{politic,jdbcType=INTEGER},
+      </if>
+      <if test="folk != null">
+        #{folk,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null">
+        #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="blood != null">
+        #{blood,jdbcType=INTEGER},
+      </if>
+      <if test="marriage != null">
+        #{marriage,jdbcType=INTEGER},
+      </if>
+      <if test="birthPlace != null">
+        #{birthPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="house != null">
+        #{house,jdbcType=VARCHAR},
+      </if>
+      <if test="degree != null">
+        #{degree,jdbcType=INTEGER},
+      </if>
+      <if test="diploma != null">
+        #{diploma,jdbcType=INTEGER},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="spical != null">
+        #{spical,jdbcType=VARCHAR},
+      </if>
+      <if test="graduateDate != null">
+        #{graduateDate,jdbcType=DATE},
+      </if>
+      <if test="active != null">
+        #{active,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neuedu.pojo.TalentPoolExample" resultType="java.lang.Long">
+    select count(*) from talent_pool
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update talent_pool
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.empId != null">
+        emp_id = #{record.empId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=INTEGER},
+      </if>
+      <if test="record.birthday != null">
+        birthday = #{record.birthday,jdbcType=DATE},
+      </if>
+      <if test="record.idCard != null">
+        id_card = #{record.idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dept != null">
+        dept = #{record.dept,jdbcType=INTEGER},
+      </if>
+      <if test="record.job != null">
+        job = #{record.job,jdbcType=INTEGER},
+      </if>
+      <if test="record.createData != null">
+        create_data = #{record.createData,jdbcType=DATE},
+      </if>
+      <if test="record.jobDate != null">
+        job_date = #{record.jobDate,jdbcType=DATE},
+      </if>
+      <if test="record.workType != null">
+        work_type = #{record.workType,jdbcType=INTEGER},
+      </if>
+      <if test="record.source != null">
+        source = #{record.source,jdbcType=INTEGER},
+      </if>
+      <if test="record.politic != null">
+        politic = #{record.politic,jdbcType=INTEGER},
+      </if>
+      <if test="record.folk != null">
+        folk = #{record.folk,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nativePlace != null">
+        native_place = #{record.nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.height != null">
+        height = #{record.height,jdbcType=INTEGER},
+      </if>
+      <if test="record.blood != null">
+        blood = #{record.blood,jdbcType=INTEGER},
+      </if>
+      <if test="record.marriage != null">
+        marriage = #{record.marriage,jdbcType=INTEGER},
+      </if>
+      <if test="record.birthPlace != null">
+        birth_place = #{record.birthPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.house != null">
+        house = #{record.house,jdbcType=VARCHAR},
+      </if>
+      <if test="record.degree != null">
+        degree = #{record.degree,jdbcType=INTEGER},
+      </if>
+      <if test="record.diploma != null">
+        diploma = #{record.diploma,jdbcType=INTEGER},
+      </if>
+      <if test="record.school != null">
+        school = #{record.school,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spical != null">
+        spical = #{record.spical,jdbcType=VARCHAR},
+      </if>
+      <if test="record.graduateDate != null">
+        graduate_date = #{record.graduateDate,jdbcType=DATE},
+      </if>
+      <if test="record.active != null">
+        active = #{record.active,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update talent_pool
+    set id = #{record.id,jdbcType=INTEGER},
+      emp_id = #{record.empId,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=INTEGER},
+      birthday = #{record.birthday,jdbcType=DATE},
+      id_card = #{record.idCard,jdbcType=VARCHAR},
+      dept = #{record.dept,jdbcType=INTEGER},
+      job = #{record.job,jdbcType=INTEGER},
+      create_data = #{record.createData,jdbcType=DATE},
+      job_date = #{record.jobDate,jdbcType=DATE},
+      work_type = #{record.workType,jdbcType=INTEGER},
+      source = #{record.source,jdbcType=INTEGER},
+      politic = #{record.politic,jdbcType=INTEGER},
+      folk = #{record.folk,jdbcType=VARCHAR},
+      native_place = #{record.nativePlace,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      height = #{record.height,jdbcType=INTEGER},
+      blood = #{record.blood,jdbcType=INTEGER},
+      marriage = #{record.marriage,jdbcType=INTEGER},
+      birth_place = #{record.birthPlace,jdbcType=VARCHAR},
+      house = #{record.house,jdbcType=VARCHAR},
+      degree = #{record.degree,jdbcType=INTEGER},
+      diploma = #{record.diploma,jdbcType=INTEGER},
+      school = #{record.school,jdbcType=VARCHAR},
+      spical = #{record.spical,jdbcType=VARCHAR},
+      graduate_date = #{record.graduateDate,jdbcType=DATE},
+      active = #{record.active,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.pojo.TalentPool">
+    update talent_pool
+    <set>
+      <if test="empId != null">
+        emp_id = #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        dept = #{dept,jdbcType=INTEGER},
+      </if>
+      <if test="job != null">
+        job = #{job,jdbcType=INTEGER},
+      </if>
+      <if test="createData != null">
+        create_data = #{createData,jdbcType=DATE},
+      </if>
+      <if test="jobDate != null">
+        job_date = #{jobDate,jdbcType=DATE},
+      </if>
+      <if test="workType != null">
+        work_type = #{workType,jdbcType=INTEGER},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=INTEGER},
+      </if>
+      <if test="politic != null">
+        politic = #{politic,jdbcType=INTEGER},
+      </if>
+      <if test="folk != null">
+        folk = #{folk,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null">
+        native_place = #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="blood != null">
+        blood = #{blood,jdbcType=INTEGER},
+      </if>
+      <if test="marriage != null">
+        marriage = #{marriage,jdbcType=INTEGER},
+      </if>
+      <if test="birthPlace != null">
+        birth_place = #{birthPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="house != null">
+        house = #{house,jdbcType=VARCHAR},
+      </if>
+      <if test="degree != null">
+        degree = #{degree,jdbcType=INTEGER},
+      </if>
+      <if test="diploma != null">
+        diploma = #{diploma,jdbcType=INTEGER},
+      </if>
+      <if test="school != null">
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="spical != null">
+        spical = #{spical,jdbcType=VARCHAR},
+      </if>
+      <if test="graduateDate != null">
+        graduate_date = #{graduateDate,jdbcType=DATE},
+      </if>
+      <if test="active != null">
+        active = #{active,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neuedu.pojo.TalentPool">
+    update talent_pool
+    set emp_id = #{empId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=DATE},
+      id_card = #{idCard,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=INTEGER},
+      job = #{job,jdbcType=INTEGER},
+      create_data = #{createData,jdbcType=DATE},
+      job_date = #{jobDate,jdbcType=DATE},
+      work_type = #{workType,jdbcType=INTEGER},
+      source = #{source,jdbcType=INTEGER},
+      politic = #{politic,jdbcType=INTEGER},
+      folk = #{folk,jdbcType=VARCHAR},
+      native_place = #{nativePlace,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      height = #{height,jdbcType=INTEGER},
+      blood = #{blood,jdbcType=INTEGER},
+      marriage = #{marriage,jdbcType=INTEGER},
+      birth_place = #{birthPlace,jdbcType=VARCHAR},
+      house = #{house,jdbcType=VARCHAR},
+      degree = #{degree,jdbcType=INTEGER},
+      diploma = #{diploma,jdbcType=INTEGER},
+      school = #{school,jdbcType=VARCHAR},
+      spical = #{spical,jdbcType=VARCHAR},
+      graduate_date = #{graduateDate,jdbcType=DATE},
+      active = #{active,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

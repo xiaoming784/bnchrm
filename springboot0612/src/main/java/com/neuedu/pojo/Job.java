@@ -3,7 +3,7 @@ package com.neuedu.pojo;
 public class Job extends MyPage{
     private Integer id;
 
-    private String jobName;
+    private String name;
 
     private Integer type;
 
@@ -17,12 +17,12 @@ public class Job extends MyPage{
         this.id = id;
     }
 
-    public String getJobName() {
-        return jobName;
+    public String getName() {
+        return name;
     }
 
-    public void setJobName(String jobName) {
-        this.jobName = jobName == null ? null : jobName.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public Integer getType() {

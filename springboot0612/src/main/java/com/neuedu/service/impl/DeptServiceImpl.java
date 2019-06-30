@@ -21,8 +21,8 @@ public class DeptServiceImpl implements DeptService {
         PageHelper.startPage(dept.getPageNo(), dept.getPageSize());
         DeptExample deptExample = new DeptExample();
         DeptExample.Criteria criteria = deptExample.createCriteria();
-        if(StringUtils.isNotBlank(dept.getDeptName()))
-            criteria.andDeptNameLike("%"+dept.getDeptName()+"%");
+        if(StringUtils.isNotBlank(dept.getName()))
+            criteria.andNameLike("%"+dept.getName()+"%");
         if(dept.getActive()!=null)
             criteria.andActiveEqualTo(dept.getActive());
 
@@ -32,7 +32,6 @@ public class DeptServiceImpl implements DeptService {
     @Override
     public List<Dept> getAll(Dept dept) {
         DeptExample deptExample = new DeptExample();
-        deptExample.createCriteria().andActiveEqualTo(1);
         return deptMapper.selectByExample(deptExample);
     }
 

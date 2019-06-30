@@ -10,7 +10,7 @@ public interface QuitMapper {
 
     int deleteByExample(QuitExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer qId);
 
     int insert(Quit record);
 
@@ -18,9 +18,7 @@ public interface QuitMapper {
 
     List<Quit> selectByExample(QuitExample example);
 
-    List<Quit> selectByExampleWithEmp(QuitExample example);
-
-    Quit selectByPrimaryKey(Integer id);
+    Quit selectByPrimaryKey(Integer qId);
 
     int updateByExampleSelective(@Param("record") Quit record, @Param("example") QuitExample example);
 

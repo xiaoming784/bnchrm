@@ -2,14 +2,14 @@ package com.neuedu.pojo;
 
 import java.util.Date;
 
-public class HandleTrial {
+public class HandleTrial extends MyPage{
     private Integer id;
 
     private Integer empId;
 
     private String comments;
 
-    private Integer commentsResults;
+    private Integer results;
 
     private Date handleData;
 
@@ -39,12 +39,12 @@ public class HandleTrial {
         this.comments = comments == null ? null : comments.trim();
     }
 
-    public Integer getCommentsResults() {
-        return commentsResults;
+    public Integer getResults() {
+        return results;
     }
 
-    public void setCommentsResults(Integer commentsResults) {
-        this.commentsResults = commentsResults;
+    public void setResults(Integer results) {
+        this.results = results;
     }
 
     public Date getHandleData() {

@@ -20,7 +20,6 @@ public class DeptController {
     public PageInfo<Dept> getDept(Dept dept){
         List<Dept> depts =deptService.getDepts(dept);
         PageInfo<Dept> pageInfo = new PageInfo<>(depts);
-        System.out.println(pageInfo);
         return pageInfo;
     }
     @GetMapping("/getAll")
@@ -43,5 +42,4 @@ public class DeptController {
     public Dept getOne(Integer id){
         return deptService.getDeptById(id);
     }
-
 }

@@ -21,7 +21,7 @@ public class MyTest {
     public void handler(){
         for(int i=1;i<=100;i++){
             Dept dept = new Dept();
-            dept.setDeptName("部门"+i);
+            dept.setName("部门"+i);
             dept.setType(1);
             dept.setActive(1);
             dept.setCreateDate(new Date());

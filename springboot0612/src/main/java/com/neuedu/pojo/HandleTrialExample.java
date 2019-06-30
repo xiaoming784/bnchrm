@@ -322,63 +322,63 @@ public class HandleTrialExample {
             return (Criteria) this;
         }
 
-        public Criteria andCommentsResultsIsNull() {
-            addCriterion("comments_results is null");
+        public Criteria andResultsIsNull() {
+            addCriterion("results is null");
             return (Criteria) this;
         }
 
-        public Criteria andCommentsResultsIsNotNull() {
-            addCriterion("comments_results is not null");
+        public Criteria andResultsIsNotNull() {
+            addCriterion("results is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCommentsResultsEqualTo(Integer value) {
-            addCriterion("comments_results =", value, "commentsResults");
+        public Criteria andResultsEqualTo(Integer value) {
+            addCriterion("results =", value, "results");
             return (Criteria) this;
         }
 
-        public Criteria andCommentsResultsNotEqualTo(Integer value) {
-            addCriterion("comments_results <>", value, "commentsResults");
+        public Criteria andResultsNotEqualTo(Integer value) {
+            addCriterion("results <>", value, "results");
             return (Criteria) this;
         }
 
-        public Criteria andCommentsResultsGreaterThan(Integer value) {
-            addCriterion("comments_results >", value, "commentsResults");
+        public Criteria andResultsGreaterThan(Integer value) {
+            addCriterion("results >", value, "results");
             return (Criteria) this;
         }
 
-        public Criteria andCommentsResultsGreaterThanOrEqualTo(Integer value) {
-            addCriterion("comments_results >=", value, "commentsResults");
+        public Criteria andResultsGreaterThanOrEqualTo(Integer value) {
+            addCriterion("results >=", value, "results");
             return (Criteria) this;
         }
 
-        public Criteria andCommentsResultsLessThan(Integer value) {
-            addCriterion("comments_results <", value, "commentsResults");
+        public Criteria andResultsLessThan(Integer value) {
+            addCriterion("results <", value, "results");
             return (Criteria) this;
         }
 
-        public Criteria andCommentsResultsLessThanOrEqualTo(Integer value) {
-            addCriterion("comments_results <=", value, "commentsResults");
+        public Criteria andResultsLessThanOrEqualTo(Integer value) {
+            addCriterion("results <=", value, "results");
             return (Criteria) this;
         }
 
-        public Criteria andCommentsResultsIn(List<Integer> values) {
-            addCriterion("comments_results in", values, "commentsResults");
+        public Criteria andResultsIn(List<Integer> values) {
+            addCriterion("results in", values, "results");
             return (Criteria) this;
         }
 
-        public Criteria andCommentsResultsNotIn(List<Integer> values) {
-            addCriterion("comments_results not in", values, "commentsResults");
+        public Criteria andResultsNotIn(List<Integer> values) {
+            addCriterion("results not in", values, "results");
             return (Criteria) this;
         }
 
-        public Criteria andCommentsResultsBetween(Integer value1, Integer value2) {
-            addCriterion("comments_results between", value1, value2, "commentsResults");
+        public Criteria andResultsBetween(Integer value1, Integer value2) {
+            addCriterion("results between", value1, value2, "results");
             return (Criteria) this;
         }
 
-        public Criteria andCommentsResultsNotBetween(Integer value1, Integer value2) {
-            addCriterion("comments_results not between", value1, value2, "commentsResults");
+        public Criteria andResultsNotBetween(Integer value1, Integer value2) {
+            addCriterion("results not between", value1, value2, "results");
             return (Criteria) this;
         }
 

@@ -2,10 +2,10 @@ package com.neuedu.pojo;
 
 import java.util.Date;
 
-public class Dept extends MyPage{
+public class Dept extends MyPage {
     private Integer id;
 
-    private String deptName;
+    private String name;
 
     private Integer type;
 
@@ -29,12 +29,12 @@ public class Dept extends MyPage{
         this.id = id;
     }
 
-    public String getDeptName() {
-        return deptName;
+    public String getName() {
+        return name;
     }
 
-    public void setDeptName(String deptName) {
-        this.deptName = deptName == null ? null : deptName.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public Integer getType() {

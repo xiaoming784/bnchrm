@@ -9,16 +9,6 @@ public class Quit extends MyPage {
 
     private Date quitDate;
 
-    private Date quitDateSearch;
-
-    public Date getQuitDateSearch() {
-        return quitDateSearch;
-    }
-
-    public void setQuitDateSearch(Date quitDateSearch) {
-        this.quitDateSearch = quitDateSearch;
-    }
-
     private Integer quitType;
 
     private String departure;
@@ -26,36 +16,6 @@ public class Quit extends MyPage {
     private Integer entering;
 
     private String remarks;
-
-    private Emp emp;
-
-    private Dept dept;
-
-    private Job job;
-
-    public Dept getDept() {
-        return dept;
-    }
-
-    public void setDept(Dept dept) {
-        this.dept = dept;
-    }
-
-    public Job getJob() {
-        return job;
-    }
-
-    public void setJob(Job job) {
-        this.job = job;
-    }
-
-    public Emp getEmp() {
-        return emp;
-    }
-
-    public void setEmp(Emp emp) {
-        this.emp = emp;
-    }
 
     public Integer getqId() {
         return qId;

@@ -10,30 +10,6 @@
     <result column="entering" jdbcType="INTEGER" property="entering" />
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
   </resultMap>
-  <resultMap id="WithEmpMap" type="com.neuedu.pojo.Quit">
-    <id column="q_id" jdbcType="INTEGER" property="qId" />
-    <result column="emp_id" jdbcType="INTEGER" property="empId" />
-    <result column="quit_date" jdbcType="DATE" property="quitDate" />
-    <result column="quit_type" jdbcType="INTEGER" property="quitType" />
-    <result column="departure" jdbcType="VARCHAR" property="departure" />
-    <result column="entering" jdbcType="INTEGER" property="entering" />
-    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
-    <association property="emp" javaType="com.neuedu.pojo.Emp">
-      <id column="e_id" property="eId"/>
-      <result column="name" property="name"/>
-      <result column="sex" property="sex"/>
-      <result column="dept_id" property="deptId"/>
-      <result column="job_id" property="jobId"/>
-    </association>
-    <association property="dept" javaType="com.neuedu.pojo.Dept">
-      <id column="d_id" property="dId"/>
-      <result column="dept_name" property="deptName"/>
-    </association>
-    <association property="job" javaType="com.neuedu.pojo.Job">
-      <id column="j_id" property="jId"/>
-      <result column="job_name" property="jobName"/>
-    </association>
-  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -95,10 +71,6 @@
   <sql id="Base_Column_List">
     q_id, emp_id, quit_date, quit_type, departure, entering, remarks
   </sql>
-  <sql id="WithEmp_Column_List">
-    q_id, emp_id, quit_date, quit_type, departure, entering, remarks,
-    emp.name, emp.sex, emp.dept_id, emp.job_id, dept.dept_name, job.job_name
-  </sql>
   <select id="selectByExample" parameterType="com.neuedu.pojo.QuitExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -113,32 +85,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExampleWithEmp" resultMap="WithEmpMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="WithEmp_Column_List" />
-    from quit
-    left join emp on quit.emp_id=emp.e_id
-    LEFT JOIN dept ON dept.d_id=emp.dept_id
-    LEFT JOIN job ON job.j_id=emp.job_id
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from quit
-    where q_id = #{q_id,jdbcType=INTEGER}
+    where q_id = #{qId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from quit
-    where q_id = #{q_id,jdbcType=INTEGER}
+    where q_id = #{qId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.neuedu.pojo.QuitExample">
     delete from quit
@@ -147,18 +102,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.neuedu.pojo.Quit">
-    insert into quit (q_id, emp_id, quit_date,
+    insert into quit (q_id, emp_id, quit_date, 
       quit_type, departure, entering, 
       remarks)
-    values (#{qId,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, #{quitDate,jdbcType=DATE},
+    values (#{qId,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, #{quitDate,jdbcType=DATE}, 
       #{quitType,jdbcType=INTEGER}, #{departure,jdbcType=VARCHAR}, #{entering,jdbcType=INTEGER}, 
       #{remarks,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.neuedu.pojo.Quit">
     insert into quit
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="q_id != null">
-          q_id,
+      <if test="qId != null">
+        q_id,
       </if>
       <if test="empId != null">
         emp_id,

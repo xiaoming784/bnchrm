@@ -5,7 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="emp_id" jdbcType="INTEGER" property="empId" />
     <result column="comments" jdbcType="VARCHAR" property="comments" />
-    <result column="comments_results" jdbcType="INTEGER" property="commentsResults" />
+    <result column="results" jdbcType="INTEGER" property="results" />
     <result column="handle_data" jdbcType="DATE" property="handleData" />
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
   </resultMap>
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, emp_id, comments, comments_results, handle_data, remarks
+    id, emp_id, comments, results, handle_data, remarks
   </sql>
   <select id="selectByExample" parameterType="com.neuedu.pojo.HandleTrialExample" resultMap="BaseResultMap">
     select
@@ -102,10 +102,10 @@
   </delete>
   <insert id="insert" parameterType="com.neuedu.pojo.HandleTrial">
     insert into handle_trial (id, emp_id, comments, 
-      comments_results, handle_data, remarks
+      results, handle_data, remarks
       )
     values (#{id,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, #{comments,jdbcType=VARCHAR}, 
-      #{commentsResults,jdbcType=INTEGER}, #{handleData,jdbcType=DATE}, #{remarks,jdbcType=VARCHAR}
+      #{results,jdbcType=INTEGER}, #{handleData,jdbcType=DATE}, #{remarks,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.neuedu.pojo.HandleTrial">
@@ -120,8 +120,8 @@
       <if test="comments != null">
         comments,
       </if>
-      <if test="commentsResults != null">
-        comments_results,
+      <if test="results != null">
+        results,
       </if>
       <if test="handleData != null">
         handle_data,
@@ -140,8 +140,8 @@
       <if test="comments != null">
         #{comments,jdbcType=VARCHAR},
       </if>
-      <if test="commentsResults != null">
-        #{commentsResults,jdbcType=INTEGER},
+      <if test="results != null">
+        #{results,jdbcType=INTEGER},
       </if>
       <if test="handleData != null">
         #{handleData,jdbcType=DATE},
@@ -169,8 +169,8 @@
       <if test="record.comments != null">
         comments = #{record.comments,jdbcType=VARCHAR},
       </if>
-      <if test="record.commentsResults != null">
-        comments_results = #{record.commentsResults,jdbcType=INTEGER},
+      <if test="record.results != null">
+        results = #{record.results,jdbcType=INTEGER},
       </if>
       <if test="record.handleData != null">
         handle_data = #{record.handleData,jdbcType=DATE},
@@ -188,7 +188,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       emp_id = #{record.empId,jdbcType=INTEGER},
       comments = #{record.comments,jdbcType=VARCHAR},
-      comments_results = #{record.commentsResults,jdbcType=INTEGER},
+      results = #{record.results,jdbcType=INTEGER},
       handle_data = #{record.handleData,jdbcType=DATE},
       remarks = #{record.remarks,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -204,8 +204,8 @@
       <if test="comments != null">
         comments = #{comments,jdbcType=VARCHAR},
       </if>
-      <if test="commentsResults != null">
-        comments_results = #{commentsResults,jdbcType=INTEGER},
+      <if test="results != null">
+        results = #{results,jdbcType=INTEGER},
       </if>
       <if test="handleData != null">
         handle_data = #{handleData,jdbcType=DATE},
@@ -220,7 +220,7 @@
     update handle_trial
     set emp_id = #{empId,jdbcType=INTEGER},
       comments = #{comments,jdbcType=VARCHAR},
-      comments_results = #{commentsResults,jdbcType=INTEGER},
+      results = #{results,jdbcType=INTEGER},
       handle_data = #{handleData,jdbcType=DATE},
       remarks = #{remarks,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
