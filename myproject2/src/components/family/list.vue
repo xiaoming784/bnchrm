@@ -28,7 +28,7 @@
         prop="deptId"
         label="员工所属部门ID"
         width="130"
-        :formatter="deptidformat">
+        >
         </el-table-column>
         <el-table-column
         prop="relaName"
@@ -169,7 +169,7 @@
             });
         },
         del(row){
-            this.delete("family/del",row.id,row.active);
+            this.deletelll("family/del",row.id,row.active);
         },
         deltext(active){
             return active==1?"删除":"恢复"

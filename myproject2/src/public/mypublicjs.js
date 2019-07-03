@@ -17,7 +17,6 @@ export default {
       myloading.close();
     })
   },
-
   post:function(url,paramsdata,callback,config={}){
     let formData=new FormData();
     for(let j in paramsdata){
@@ -25,9 +24,10 @@ export default {
     }
     let myloading= Loading.service();
      axios.post(url,formData,config).then(result=>{
+      let type=result.data.code==1?"success":"error";
       Message({
-        message: "success",
-        type:"success"
+        message: result.data.message,
+        type:type
       });
       callback(result.data);
     }).catch(err=>{
@@ -40,19 +40,11 @@ export default {
       myloading.close();
     })
   },
-
   merge:function(source,target){
     for(let k in source){
       target[k]=source[k];
     }
   },
-
-  merge1:function(source,target){
-    for(let k in source){
-      target[k]=source[k];
-    }
-  },
-
   del:function(id,status,callback){
     let _selt=this;
     let isDel=status==1?0:1;

@@ -8,9 +8,11 @@ import 'element-ui/lib/theme-chalk/index.css'
 import mypublic from '@/public/mypublicjs'
 import axios from 'axios'
 import layer from 'vue-layer'
+import Blob from './vendor/Blob'
+import Export2Excel from './vendor/Export2Excel'
 
 axios.defaults.baseURL="http://127.0.0.1/";
-Vue.prototype.axios=axios;
+Vue.prototype.$axios=axios;
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.prototype.get=mypublic.get;
@@ -34,44 +36,42 @@ if (valid) {
 }
 });
 }
-
-Vue.prototype.merge1=mypublic.merge1;
-Vue.prototype.$layer = layer(Vue);
-Vue.prototype.reset=function(formwitness){
-  this.$refs[formwitness].resetFields();
+Vue.prototype.delete=function(url,dId,status){
+  mypublic.del(dId,status,(dId,status)=>{
+    mypublic.get(url,(result)=>{
+      this.$message({
+        showClose: true,
+        message: result.message,
+        type: 'success'
+      });
+      this.reload();
+    },{dId:dId,active:status});
+  })
 }
-Vue.prototype.post=function(formwitness,url,params,
-  callback=()=>{
-  this.$layer.closeAll();
-  this.reload()
-  }
-,config={}){
-this.$refs[formwitness].validate((valid) => {
-if (valid) {
-  mypublic.post(url,params,callback,config);
-} else {
-  return false;
-}
-});
-}
-
-
-
-
-
-Vue.prototype.delete=function(url,id,status){
+Vue.prototype.deletelll=function(url,id,status){
   mypublic.del(id,status,(id,status)=>{
     mypublic.get(url,(result)=>{
       this.$message({
         showClose: true,
-        message: 'success',
+        message: result.message,
         type: 'success'
       });
       this.reload();
     },{id:id,active:status});
   })
 }
-
+Vue.prototype.deletewww=function(url,id,status){
+  mypublic.del(id,status,(id,status)=>{
+    mypublic.get(url,(result)=>{
+      this.$message({
+        showClose: true,
+        message: result.message,
+        type: 'success'
+      });
+      this.reload();
+    },{id:id,active:status});
+  })
+}
 
 /* eslint-disable no-new */
 new Vue({

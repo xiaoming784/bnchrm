@@ -35,7 +35,7 @@
         prop="deptId"
         label="所属部门ID"
         width="150"
-        :formatter="deptidformat">
+        >
         </el-table-column>
         <el-table-column
         prop="beginData"
@@ -192,7 +192,7 @@
             });
         },
         del(row){
-            this.delete("career/del",row.id,row.active);
+            this.deletelll("career/del",row.id,row.active);
         },
         deltext(active){
             return active==1?"删除":"恢复"
