@@ -2,14 +2,14 @@ package com.neuedu.pojo;
 
 import java.util.Date;
 
-public class Dept extends MyPage {
-    private Integer id;
+public class Dept extends MyPage{
+    private Integer dId;
 
-    private String name;
+    private String deptName;
 
     private Integer type;
 
-    private String phone;
+    private String deptPhone;
 
     private String fax;
 
@@ -21,20 +21,20 @@ public class Dept extends MyPage {
 
     private Integer active;
 
-    public Integer getId() {
-        return id;
+    public Integer getdId() {
+        return dId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setdId(Integer dId) {
+        this.dId = dId;
     }
 
-    public String getName() {
-        return name;
+    public String getDeptName() {
+        return deptName;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setDeptName(String deptName) {
+        this.deptName = deptName == null ? null : deptName.trim();
     }
 
     public Integer getType() {
@@ -45,12 +45,12 @@ public class Dept extends MyPage {
         this.type = type;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getDeptPhone() {
+        return deptPhone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+    public void setDeptPhone(String deptPhone) {
+        this.deptPhone = deptPhone == null ? null : deptPhone.trim();
     }
 
     public String getFax() {

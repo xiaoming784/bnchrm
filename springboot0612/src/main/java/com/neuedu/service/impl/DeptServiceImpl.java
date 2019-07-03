@@ -15,31 +15,28 @@ import java.util.List;
 @Service
 public class DeptServiceImpl implements DeptService {
     @Resource
-
     DeptMapper deptMapper;
     @Override
     public List<Dept> getDepts(Dept dept) {
         PageHelper.startPage(dept.getPageNo(), dept.getPageSize());
         DeptExample deptExample = new DeptExample();
         DeptExample.Criteria criteria = deptExample.createCriteria();
-        if(StringUtils.isNotBlank(dept.getName()))
-            criteria.andNameLike("%"+dept.getName()+"%");
+        if(StringUtils.isNotBlank(dept.getDeptName()))
+            criteria.andDeptNameLike("%"+dept.getDeptName()+"%");
         if(dept.getActive()!=null)
             criteria.andActiveEqualTo(dept.getActive());
-
         return deptMapper.selectByExample(deptExample);
     }
 
     @Override
     public List<Dept> getAll(Dept dept) {
         DeptExample deptExample = new DeptExample();
-        deptExample.createCriteria().andActiveEqualTo(1);
         return deptMapper.selectByExample(deptExample);
     }
 
     @Override
-    public Dept getDeptById(int id) {
-        return deptMapper.selectByPrimaryKey(id);
+    public Dept getDeptById(int dId) {
+        return deptMapper.selectByPrimaryKey(dId);
     }
 
     @Override
@@ -62,7 +59,7 @@ public class DeptServiceImpl implements DeptService {
     public List<Dept> getDeptByName(String name) {
         DeptExample deptExample = new DeptExample();
         DeptExample.Criteria criteria = deptExample.createCriteria();
-        criteria.andNameLike("%" + name +"%");
+        criteria.andDeptNameLike("%" + name +"%");
         List<Dept> depts = deptMapper.selectByExample(deptExample);
         return depts;
     }

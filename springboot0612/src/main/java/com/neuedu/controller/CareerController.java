@@ -72,7 +72,7 @@ public class CareerController  {
         System.out.println(depts.toString());
         List<Career> careers = new ArrayList<>();
         for (Dept dept : depts) {
-            Integer id = dept.getId();
+            Integer id = dept.getdId();
             Career career = careerService.getCareerByDeptId(id);
             careers.add(career);
         }

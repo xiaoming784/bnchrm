@@ -3,6 +3,8 @@
 <mapper namespace="com.neuedu.dao.CareerMapper">
   <resultMap id="BaseResultMap" type="com.neuedu.pojo.Career">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="dept_id" jdbcType="INTEGER" property="deptId" />
+    <result column="emp_name" jdbcType="VARCHAR" property="empName" />
     <result column="begin_data" jdbcType="DATE" property="beginData" />
     <result column="end_data" jdbcType="DATE" property="endData" />
     <result column="unit_name" jdbcType="VARCHAR" property="unitName" />
@@ -13,8 +15,6 @@
     <result column="wit_job" jdbcType="VARCHAR" property="witJob" />
     <result column="wit_phone" jdbcType="VARCHAR" property="witPhone" />
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
-    <result column="dept_id" jdbcType="INTEGER" property="deptId" />
-    <result column="emp_name" jdbcType="VARCHAR" property="empName" />
     <result column="active" jdbcType="INTEGER" property="active" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -76,8 +76,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, begin_data, end_data, unit_name, workers, post, salary, witness, wit_job, wit_phone, 
-    remarks, dept_id, emp_name, active
+    id, dept_id, emp_name, begin_data, end_data, unit_name, workers, post, salary, witness, 
+    wit_job, wit_phone, remarks, active
   </sql>
   <select id="selectByExample" parameterType="com.neuedu.pojo.CareerExample" resultMap="BaseResultMap">
     select
@@ -110,22 +110,28 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.neuedu.pojo.Career">
-    insert into career (id, begin_data, end_data, 
-      unit_name, workers, post, 
-      salary, witness, wit_job, 
-      wit_phone, remarks, dept_id, 
-      emp_name, active)
-    values (#{id,jdbcType=INTEGER}, #{beginData,jdbcType=DATE}, #{endData,jdbcType=DATE}, 
-      #{unitName,jdbcType=VARCHAR}, #{workers,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, 
-      #{salary,jdbcType=INTEGER}, #{witness,jdbcType=VARCHAR}, #{witJob,jdbcType=VARCHAR}, 
-      #{witPhone,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{deptId,jdbcType=INTEGER}, 
-      #{empName,jdbcType=VARCHAR}, #{active,jdbcType=INTEGER})
+    insert into career (id, dept_id, emp_name, 
+      begin_data, end_data, unit_name, 
+      workers, post, salary, 
+      witness, wit_job, wit_phone, 
+      remarks, active)
+    values (#{id,jdbcType=INTEGER}, #{deptId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR}, 
+      #{beginData,jdbcType=DATE}, #{endData,jdbcType=DATE}, #{unitName,jdbcType=VARCHAR}, 
+      #{workers,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, #{salary,jdbcType=INTEGER}, 
+      #{witness,jdbcType=VARCHAR}, #{witJob,jdbcType=VARCHAR}, #{witPhone,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{active,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.neuedu.pojo.Career">
     insert into career
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
+      </if>
+      <if test="deptId != null">
+        dept_id,
+      </if>
+      <if test="empName != null">
+        emp_name,
       </if>
       <if test="beginData != null">
         begin_data,
@@ -157,12 +163,6 @@
       <if test="remarks != null">
         remarks,
       </if>
-      <if test="deptId != null">
-        dept_id,
-      </if>
-      <if test="empName != null">
-        emp_name,
-      </if>
       <if test="active != null">
         active,
       </if>
@@ -170,6 +170,12 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="empName != null">
+        #{empName,jdbcType=VARCHAR},
       </if>
       <if test="beginData != null">
         #{beginData,jdbcType=DATE},
@@ -201,12 +207,6 @@
       <if test="remarks != null">
         #{remarks,jdbcType=VARCHAR},
       </if>
-      <if test="deptId != null">
-        #{deptId,jdbcType=INTEGER},
-      </if>
-      <if test="empName != null">
-        #{empName,jdbcType=VARCHAR},
-      </if>
       <if test="active != null">
         #{active,jdbcType=INTEGER},
       </if>
@@ -223,6 +223,12 @@
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.deptId != null">
+        dept_id = #{record.deptId,jdbcType=INTEGER},
+      </if>
+      <if test="record.empName != null">
+        emp_name = #{record.empName,jdbcType=VARCHAR},
       </if>
       <if test="record.beginData != null">
         begin_data = #{record.beginData,jdbcType=DATE},
@@ -254,12 +260,6 @@
       <if test="record.remarks != null">
         remarks = #{record.remarks,jdbcType=VARCHAR},
       </if>
-      <if test="record.deptId != null">
-        dept_id = #{record.deptId,jdbcType=INTEGER},
-      </if>
-      <if test="record.empName != null">
-        emp_name = #{record.empName,jdbcType=VARCHAR},
-      </if>
       <if test="record.active != null">
         active = #{record.active,jdbcType=INTEGER},
       </if>
@@ -271,6 +271,8 @@
   <update id="updateByExample" parameterType="map">
     update career
     set id = #{record.id,jdbcType=INTEGER},
+      dept_id = #{record.deptId,jdbcType=INTEGER},
+      emp_name = #{record.empName,jdbcType=VARCHAR},
       begin_data = #{record.beginData,jdbcType=DATE},
       end_data = #{record.endData,jdbcType=DATE},
       unit_name = #{record.unitName,jdbcType=VARCHAR},
@@ -281,8 +283,6 @@
       wit_job = #{record.witJob,jdbcType=VARCHAR},
       wit_phone = #{record.witPhone,jdbcType=VARCHAR},
       remarks = #{record.remarks,jdbcType=VARCHAR},
-      dept_id = #{record.deptId,jdbcType=INTEGER},
-      emp_name = #{record.empName,jdbcType=VARCHAR},
       active = #{record.active,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -291,6 +291,12 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.pojo.Career">
     update career
     <set>
+      <!--<if test="deptId != null">-->
+        dept_id = #{deptId,jdbcType=INTEGER},
+      <!--</if>-->
+      <if test="empName != null">
+        emp_name = #{empName,jdbcType=VARCHAR},
+      </if>
       <if test="beginData != null">
         begin_data = #{beginData,jdbcType=DATE},
       </if>
@@ -321,12 +327,6 @@
       <if test="remarks != null">
         remarks = #{remarks,jdbcType=VARCHAR},
       </if>
-      <if test="deptId != null">
-        dept_id = #{deptId,jdbcType=INTEGER},
-      </if>
-      <if test="empName != null">
-        emp_name = #{empName,jdbcType=VARCHAR},
-      </if>
       <if test="active != null">
         active = #{active,jdbcType=INTEGER},
       </if>
@@ -335,7 +335,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.neuedu.pojo.Career">
     update career
-    set begin_data = #{beginData,jdbcType=DATE},
+    set dept_id = #{deptId,jdbcType=INTEGER},
+      emp_name = #{empName,jdbcType=VARCHAR},
+      begin_data = #{beginData,jdbcType=DATE},
       end_data = #{endData,jdbcType=DATE},
       unit_name = #{unitName,jdbcType=VARCHAR},
       workers = #{workers,jdbcType=VARCHAR},
@@ -345,8 +347,6 @@
       wit_job = #{witJob,jdbcType=VARCHAR},
       wit_phone = #{witPhone,jdbcType=VARCHAR},
       remarks = #{remarks,jdbcType=VARCHAR},
-      dept_id = #{deptId,jdbcType=INTEGER},
-      emp_name = #{empName,jdbcType=VARCHAR},
       active = #{active,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

@@ -32,9 +32,9 @@ public class FamilyServiceImpl implements FamilyService {
         List<Family> families = familyMapper.selectByExample(familyExample);
         for (Family family1:families) {
             Emp emp =  empMapper.selectByPrimaryKey(family1.getId());
-            if (emp != null && emp.getName() != null && emp.getDept()!= null) {
+            if (emp != null && emp.getName() != null && emp.getDeptId()!= null) {
                 String empName = empMapper.selectByPrimaryKey(family1.getId()).getName();
-                Integer deptId = empMapper.selectByPrimaryKey(family1.getId()).getDept();
+                Integer deptId = empMapper.selectByPrimaryKey(family1.getId()).getDeptId();
                 family1.setEmpName(empName);
                 family1.setDeptId(deptId);
             } else {

@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -20,20 +21,20 @@ public class JobServiceImpl implements JobService {
         PageHelper.startPage(job.getPageNo(), job.getPageSize());
         JobExample jobExample = new JobExample();
         JobExample.Criteria criteria = jobExample.createCriteria();
-        if(StringUtils.isNotBlank(job.getName()))
-            criteria.andNameLike("%"+job.getName()+"%");
+        if(StringUtils.isNotBlank(job.getJobName()))
+            criteria.andJobNameLike("%"+job.getJobName()+"%");
         return jobMapper.selectByExample(jobExample);
     }
 
     @Override
     public List<Job> getAll(Job job) {
-        JobExample deptExample = new JobExample();
-        return jobMapper.selectByExample(deptExample);
+        JobExample jobExample = new JobExample();
+        return jobMapper.selectByExample(jobExample);
     }
 
     @Override
-    public Job getJobById(int id) {
-        return jobMapper.selectByPrimaryKey(id);
+    public Job getJobById(int jId) {
+        return jobMapper.selectByPrimaryKey(jId);
     }
 
     @Override
@@ -50,5 +51,4 @@ public class JobServiceImpl implements JobService {
     public int update(Job job) {
         return jobMapper.updateByPrimaryKeySelective(job);
     }
-
 }

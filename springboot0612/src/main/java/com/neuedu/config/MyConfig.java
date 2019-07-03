@@ -42,7 +42,6 @@ public class MyConfig {
             @Override
             public Date convert(String s) {
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-
                 Date date=null;
                 try {
                     date=sdf.parse(s);

@@ -3,6 +3,7 @@
 <mapper namespace="com.neuedu.dao.ForeignLanguagesMapper">
   <resultMap id="BaseResultMap" type="com.neuedu.pojo.ForeignLanguages">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="emp_id" jdbcType="INTEGER" property="empId" />
     <result column="languages" jdbcType="INTEGER" property="languages" />
     <result column="proficiency" jdbcType="INTEGER" property="proficiency" />
     <result column="dept_id" jdbcType="INTEGER" property="deptId" />
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, languages, proficiency, dept_id, emp_name, active
+    id, emp_id, languages, proficiency, dept_id, emp_name, active
   </sql>
   <select id="selectByExample" parameterType="com.neuedu.pojo.ForeignLanguagesExample" resultMap="BaseResultMap">
     select
@@ -101,18 +102,21 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.neuedu.pojo.ForeignLanguages">
-    insert into foreign_languages (id, languages, proficiency, 
-      dept_id, emp_name, active
-      )
-    values (#{id,jdbcType=INTEGER}, #{languages,jdbcType=INTEGER}, #{proficiency,jdbcType=INTEGER}, 
-      #{deptId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR}, #{active,jdbcType=INTEGER}
-      )
+    insert into foreign_languages (id, emp_id, languages, 
+      proficiency, dept_id, emp_name, 
+      active)
+    values (#{id,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, #{languages,jdbcType=INTEGER}, 
+      #{proficiency,jdbcType=INTEGER}, #{deptId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR}, 
+      #{active,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.neuedu.pojo.ForeignLanguages">
     insert into foreign_languages
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
+      </if>
+      <if test="empId != null">
+        emp_id,
       </if>
       <if test="languages != null">
         languages,
@@ -133,6 +137,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null">
+        #{empId,jdbcType=INTEGER},
       </if>
       <if test="languages != null">
         #{languages,jdbcType=INTEGER},
@@ -163,6 +170,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.empId != null">
+        emp_id = #{record.empId,jdbcType=INTEGER},
+      </if>
       <if test="record.languages != null">
         languages = #{record.languages,jdbcType=INTEGER},
       </if>
@@ -186,6 +196,7 @@
   <update id="updateByExample" parameterType="map">
     update foreign_languages
     set id = #{record.id,jdbcType=INTEGER},
+      emp_id = #{record.empId,jdbcType=INTEGER},
       languages = #{record.languages,jdbcType=INTEGER},
       proficiency = #{record.proficiency,jdbcType=INTEGER},
       dept_id = #{record.deptId,jdbcType=INTEGER},
@@ -198,6 +209,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.pojo.ForeignLanguages">
     update foreign_languages
     <set>
+      <if test="empId != null">
+        emp_id = #{empId,jdbcType=INTEGER},
+      </if>
       <if test="languages != null">
         languages = #{languages,jdbcType=INTEGER},
       </if>
@@ -218,7 +232,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.neuedu.pojo.ForeignLanguages">
     update foreign_languages
-    set languages = #{languages,jdbcType=INTEGER},
+    set emp_id = #{empId,jdbcType=INTEGER},
+      languages = #{languages,jdbcType=INTEGER},
       proficiency = #{proficiency,jdbcType=INTEGER},
       dept_id = #{deptId,jdbcType=INTEGER},
       emp_name = #{empName,jdbcType=VARCHAR},

@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.neuedu.dao.QuitMapper;
 import com.neuedu.pojo.Quit;
 import com.neuedu.pojo.QuitExample;
+import com.neuedu.pojo.QuitWang;
 import com.neuedu.service.QuitService;
 import org.springframework.stereotype.Service;
 
@@ -39,9 +40,9 @@ public class QuitServiceImpl implements QuitService {
     }
 
     @Override
-    public int add(Quit quit) {
+    public int add(QuitWang quitWang) {
         //quit.setCreateDate(new Date());
-        return quitMapper.insertSelective(quit);
+        return quitMapper.insertSelective(quitWang);
     }
 
     @Override
@@ -52,5 +53,9 @@ public class QuitServiceImpl implements QuitService {
     @Override
     public int update(Quit quit) {
         return quitMapper.updateByPrimaryKeySelective(quit);
+    }
+    @Override
+    public  int del2(QuitWang quitWang){
+        return quitMapper.deleteByPrimaryKey(quitWang.getqId());
     }
 }

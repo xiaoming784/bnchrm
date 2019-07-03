@@ -39,7 +39,7 @@ public class DeptController {
         return deptService.update(dept);
     }
     @GetMapping("/getOne")
-    public Dept getOne(Integer id){
-        return deptService.getDeptById(id);
+    public Dept getOne(Integer dId){
+        return deptService.getDeptById(dId);
     }
 }

@@ -2,6 +2,7 @@ package com.neuedu.controller;
 
 
 import com.github.pagehelper.PageInfo;
+import com.neuedu.dao.QuitMapper;
 import com.neuedu.pojo.*;
 import com.neuedu.service.*;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,39 +38,21 @@ public class TalentPoolController {
         return pageInfo;
     }
     @GetMapping("/getAll")
-    public List<Emp> getAll(){
-        return empService.getAll();
+    public List<Emp> getAll(Emp emp){
+        return empService.getAll(emp);
     }
     @PostMapping("/add")
-    public int add(Emp emp){
-        //emp.setResults(12);
-//        int res = JOptionPane.showConfirmDialog(null, "是否继续操作", "是否继续", JOptionPane.YES_NO_OPTION);
-//        if (res == JOptionPane.YES_OPTION) {
-//            System.out.println("选择是后执行的代码"); // 点击“是”后执行这个代码块
-//            emp.setResults(12);
-//            return empService.add(emp);
-//        } else {
-//            System.out.println("选择否后执行的代码"); // 点击“否”后执行这个代码块
-//            return empService.add(emp);
-//        }
-
-        Emp emp2=empService.getEmpById(emp.getEmpId());
-        if(emp.getEmpId()!=null){
-
-            TalentPool talentPool=talentPoolService.getTalentPoolById(emp.getEmpId());
+    public int add(EmpWang emp){
+        EmpWang emp2=empService.getEmpByIdWang(emp.getEmpId());
+        System.out.println("=================="+emp.getEmpId());
+        System.out.println("+++++++++++++++"+emp2);
+        if(emp.geteId()!=null){
+            TalentPool talentPool=talentPoolService.getTalentPoolById(emp.geteId());
             System.out.println(talentPool);
             talentPool.setActive(2);
             System.out.println(talentPool.getActive());
             talentPoolService.update(talentPool);
-
         }
-//       TalentPool talentPool=talentPoolService.getTalentPoolById(emp.getEmpId());
-//       if(talentPool!=null) {
-//           System.out.println(talentPool);
-//           talentPool.setActive(2);
-//           System.out.println(talentPool.getActive());
-//           talentPoolService.update(talentPool);
-//       }
         if(emp2!=null){
             emp2.setResults(0);
             emp2.setTrialBegin(new Date());
@@ -77,11 +60,11 @@ public class TalentPoolController {
             calendar.setTime(new Date());
             calendar.add(Calendar.MONTH, +1);
             emp2.setTrialEnd(calendar.getTime());
-            return empService.update(emp2);
+            return empService.updatewang(emp2);
         }
         else {
-            emp.setResults(0);
-            return empService.add(emp);
+            emp2.setResults(0);
+            return empService.addwang(emp2);
         }
 
     }
@@ -94,51 +77,48 @@ public class TalentPoolController {
         calendar.add(Calendar.MONTH, +3);
         emp.setTrialEnd(calendar.getTime());
         int a=empService.add(emp);
-        List<Emp> emps = empService.getAll();
+        Emp emp1 = new Emp();
+        List<Emp> emps = empService.getAll(emp1);
         Emp emp2=emps.get(emps.size()-1);
-        Quit quit=new  Quit();
+        System.out.println(emp2.geteId());
+        QuitWang quitWang=new QuitWang();
         HandleTrial handleTrial=new HandleTrial();
-        quit.setqId(emp2.getEmpId());
-        quit.setEmpId(emp2.getEmpId());
-        quit.setEntering(1);
-        quitService.add(quit);
-        handleTrial.setId(emp2.getEmpId());
-        handleTrial.setEmpId(emp2.getEmpId());
-        handleTrial.setResults(0);
+        quitWang.setqId(emp2.geteId());
+        System.out.println("--------------------------"+quitWang.getqId());
+        quitWang.setEmpId(emp2.geteId());
+        quitWang.setEntering(1);
+        quitService.add(quitWang);
+        handleTrial.setId(emp2.geteId());
+        handleTrial.setEmpId(emp2.geteId());
+        handleTrial.setCommentsResults(0);
         handleTrialService.add(handleTrial);
         Career career=new Career();
-        career.setId(emp2.getEmpId());
+        career.setId(emp2.geteId());
         career.setActive(1);
         careerService.add(career);
         ForeignLanguages foreignLanguages=new ForeignLanguages();
-        foreignLanguages.setId(emp2.getEmpId());
+        foreignLanguages.setId(emp2.geteId());
+        foreignLanguages.setEmpId(emp2.geteId());
         foreignLanguages.setActive(1);
         foreignLanguagesService.add(foreignLanguages);
         Family family=new Family();
-        family.setId(emp2.getEmpId());
+        family.setId(emp2.geteId());
+        family.setEmpId(emp2.geteId());
         family.setActive(1);
         familyService.add(family);
         return a;
     }
-//    @PostMapping("/talentEmp")
-//    public int talentEmp(TalentPool talentPool){
-//        Emp emp = null;
-//        emp.setEmpId(talentPool.getEmpId());
-//        emp.setName(talentPool.getName());
-//
-//        return empService.add(emp);
-//    }
     @GetMapping("/del")
     public int del(Emp emp){
         //emp = empService.getEmpById(emp.getEmpId());
-        System.out.println(emp.getEmpId()+"666");
+        System.out.println(emp.geteId()+"666");
         TalentPool talentPool;
         if(emp.getResults()==1)
             emp.setResults(4);
 //        else if(emp.getResults()==0)
 //            emp.setResults(1);
-        if(emp.getEmpId()!=null){
-            talentPool=talentPoolService.getTalentPoolById(emp.getEmpId());
+        if(emp.geteId()!=null){
+            talentPool=talentPoolService.getTalentPoolById(emp.geteId());
             if(talentPool!=null){
                 System.out.println(talentPool);
                 talentPool.setActive(1);
@@ -146,15 +126,15 @@ public class TalentPoolController {
                 talentPoolService.update(talentPool);
             }else{
                 talentPool = new TalentPool();
-                talentPool.setId(emp.getEmpId());
-                talentPool.setEmpId(emp.getEmpId());
+                talentPool.setId(emp.geteId());
+                talentPool.setEmpId(emp.geteId());
                 talentPool.setActive(1);
                 talentPool.setBirthday(emp.getBirthday());
                 talentPool.setBirthPlace(emp.getBirthPlace());
                 talentPool.setBlood(emp.getBlood());
                 talentPool.setCreateData(emp.getCreateData());
                 talentPool.setDegree(emp.getDegree());
-                talentPool.setDept(emp.getDept());
+                talentPool.setDept(emp.getDeptId());
                 talentPool.setDiploma(emp.getDiploma());
                 talentPool.setEmail(emp.getEmail());
                 talentPool.setFolk(emp.getFolk());
@@ -162,7 +142,7 @@ public class TalentPoolController {
                 talentPool.setHeight(emp.getHeight());
                 talentPool.setHouse(emp.getHouse());
                 talentPool.setIdCard(emp.getIdCard());
-                talentPool.setJob(emp.getJob());
+                talentPool.setJob(emp.getJobId());
                 talentPool.setJobDate(emp.getJobDate());
                 talentPool.setMarriage(emp.getMarriage());
                 talentPool.setName(emp.getName());
@@ -188,38 +168,19 @@ public class TalentPoolController {
         System.out.println(empId);
         return empService.getEmpById(empId); }
     @GetMapping("/getOneQuit")
-    public Quit getOneQuit(Integer empId){
-//        if(quitService.getQuitById(empId)!=null){
-//            return  quitService.getQuitById(empId);
-//        }else {
-//            Quit quit=null;
-//            quit.setEmpId(empId);
-//            quitService.add(quit);
-//            return  quitService.getQuitById(empId);
-//        }
-
-        return  quitService.getQuitById(empId);
+    public Quit getOneQuit(Integer eId){
+        return  quitService.getQuitById(eId);
     }
     @PostMapping("/addQuit")
-    public  int addQuit(Quit quit){
-        System.out.println(quit);
-        Emp emp=empService.getEmpById(quit.getEmpId());
+    public  int addQuit(QuitWang quitWang){
+        System.out.println("--------------------"+quitWang);
+        Emp emp=empService.getEmpById(quitWang.getEmpId());
         del(emp);
-        HandleTrial handleTrial=handleTrialService.getHandleTrialById(quit.getEmpId());
-        handleTrial.setResults(4);
+        HandleTrial handleTrial=handleTrialService.getHandleTrialById(quitWang.getEmpId());
+        handleTrial.setCommentsResults(4);
+        quitService.del2(quitWang);
         handleTrialService.update(handleTrial);
-        return quitService.update(quit);
-//        Quit quit2=quitService.getQuitById(quit.getEmpId());
-//        if(quit2!=null){
-//            quit2.setDeparture(quit.getDeparture());
-//            quit2.setQuitDate(quit.getQuitDate());
-//            quit2.setQuitType(quit.getQuitType());
-//            quit2.setRemarks(quit.getRemarks());
-//            return  quitService.update(quit2);
-//        }else{
-//            quit.setqId(quit.getEmpId());
-//            return  quitService.add(quit);
-//        }
+        return quitService.add(quitWang);
     }
     //人才
     @Resource
@@ -241,7 +202,12 @@ public class TalentPoolController {
     @GetMapping("/getOneTalent")
     public TalentPool getOneTalent(Integer id){ return talentPoolService.getTalentPoolById(id); }
     @GetMapping("/getOneEmp")
-    public Emp getOneEmp(Integer empId){ return empService.getEmpById(empId); }
+    public Emp getOneEmp(Integer eId){
+        System.out.println(eId);
+        Emp emp = empService.getEmpById(eId);
+        System.out.println(emp.getBirthday());
+        return empService.getEmpById(eId);
+    }
     @GetMapping("/delTalent")
     public int delTalent(TalentPool talentPool){return talentPoolService.update(talentPool);}
     @Resource
@@ -256,15 +222,8 @@ public class TalentPoolController {
     JobService jobService;
     @GetMapping("/getJob")
     public List<Job> getJob(){
-        List<Job> jobs = jobService.getAll();
+        Job job=new Job();
+        List<Job> jobs = jobService.getAll(job);
         return  jobs;
     }
-//    public Map<String,List<?>> getDeptJob(){
-//        Map<String,List<?>> map = new HashMap<>();
-//        Dept dept = new Dept();
-//        dept.setActive(1);
-//        map.put("depts", deptService.getAll(dept));
-//        System.out.println(map);
-//        return map;
-//    }
 }

@@ -9,7 +9,7 @@ public class HandleTrial extends MyPage{
 
     private String comments;
 
-    private Integer results;
+    private Integer commentsResults;
 
     private Date handleData;
 
@@ -39,12 +39,12 @@ public class HandleTrial extends MyPage{
         this.comments = comments == null ? null : comments.trim();
     }
 
-    public Integer getResults() {
-        return results;
+    public Integer getCommentsResults() {
+        return commentsResults;
     }
 
-    public void setResults(Integer results) {
-        this.results = results;
+    public void setCommentsResults(Integer commentsResults) {
+        this.commentsResults = commentsResults;
     }
 
     public Date getHandleData() {

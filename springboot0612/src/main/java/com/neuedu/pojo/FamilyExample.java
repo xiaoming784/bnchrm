@@ -164,6 +164,66 @@ public class FamilyExample {
             return (Criteria) this;
         }
 
+        public Criteria andEmpIdIsNull() {
+            addCriterion("emp_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpIdIsNotNull() {
+            addCriterion("emp_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpIdEqualTo(Integer value) {
+            addCriterion("emp_id =", value, "empId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpIdNotEqualTo(Integer value) {
+            addCriterion("emp_id <>", value, "empId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpIdGreaterThan(Integer value) {
+            addCriterion("emp_id >", value, "empId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("emp_id >=", value, "empId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpIdLessThan(Integer value) {
+            addCriterion("emp_id <", value, "empId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpIdLessThanOrEqualTo(Integer value) {
+            addCriterion("emp_id <=", value, "empId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpIdIn(List<Integer> values) {
+            addCriterion("emp_id in", values, "empId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpIdNotIn(List<Integer> values) {
+            addCriterion("emp_id not in", values, "empId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpIdBetween(Integer value1, Integer value2) {
+            addCriterion("emp_id between", value1, value2, "empId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("emp_id not between", value1, value2, "empId");
+            return (Criteria) this;
+        }
+
         public Criteria andRelationshipIsNull() {
             addCriterion("relationship is null");
             return (Criteria) this;
@@ -444,62 +504,52 @@ public class FamilyExample {
             return (Criteria) this;
         }
 
-        public Criteria andPhoneEqualTo(String value) {
+        public Criteria andPhoneEqualTo(Integer value) {
             addCriterion("phone =", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNotEqualTo(String value) {
+        public Criteria andPhoneNotEqualTo(Integer value) {
             addCriterion("phone <>", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneGreaterThan(String value) {
+        public Criteria andPhoneGreaterThan(Integer value) {
             addCriterion("phone >", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneGreaterThanOrEqualTo(String value) {
+        public Criteria andPhoneGreaterThanOrEqualTo(Integer value) {
             addCriterion("phone >=", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneLessThan(String value) {
+        public Criteria andPhoneLessThan(Integer value) {
             addCriterion("phone <", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneLessThanOrEqualTo(String value) {
+        public Criteria andPhoneLessThanOrEqualTo(Integer value) {
             addCriterion("phone <=", value, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneLike(String value) {
-            addCriterion("phone like", value, "phone");
-            return (Criteria) this;
-        }
-
-        public Criteria andPhoneNotLike(String value) {
-            addCriterion("phone not like", value, "phone");
-            return (Criteria) this;
-        }
-
-        public Criteria andPhoneIn(List<String> values) {
+        public Criteria andPhoneIn(List<Integer> values) {
             addCriterion("phone in", values, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNotIn(List<String> values) {
+        public Criteria andPhoneNotIn(List<Integer> values) {
             addCriterion("phone not in", values, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneBetween(String value1, String value2) {
+        public Criteria andPhoneBetween(Integer value1, Integer value2) {
             addCriterion("phone between", value1, value2, "phone");
             return (Criteria) this;
         }
 
-        public Criteria andPhoneNotBetween(String value1, String value2) {
+        public Criteria andPhoneNotBetween(Integer value1, Integer value2) {
             addCriterion("phone not between", value1, value2, "phone");
             return (Criteria) this;
         }

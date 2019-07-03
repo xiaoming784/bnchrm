@@ -7,7 +7,7 @@ import com.neuedu.dao.EmpMapper;
 import com.neuedu.pojo.Career;
 import com.neuedu.pojo.CareerExample;
 import com.neuedu.pojo.Emp;
-import com.neuedu.pojo.Family;
+import com.neuedu.pojo.EmpWang;
 import com.neuedu.service.CareerService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -35,11 +35,17 @@ public class CareerServiceImpl implements CareerService {
         List<Career> careers = careerMapper.selectByExample(careerExample);
         for (Career career1:careers) {
             Emp emp =  empMapper.selectByPrimaryKey(career1.getId());
-            if (emp != null && emp.getName() != null && emp.getDept()!= null) {
+            System.out.println("----------------"+career1.getId());
+            System.out.println("------------"+emp.getName());
+            System.out.println("----------"+emp.getDeptId());
+            if (emp != null && emp.getName() != null && emp.getDeptId()!= null) {
+                System.out.println("//////////////////////////////////");
                 String empName = empMapper.selectByPrimaryKey(career1.getId()).getName();
-                Integer deptId = empMapper.selectByPrimaryKey(career1.getId()).getDept();
+                Integer deptId = empMapper.selectByPrimaryKey(career1.getId()).getDeptId();
+                System.out.println("---------------------------------"+empName+"+++++++"+deptId);
                 career1.setEmpName(empName);
                 career1.setDeptId(deptId);
+                System.out.println("-=-=-=-=-=-=-=-="+career1.getDeptId());
             } else {
                 career1.setEmpName("无此员工");
                 career1.setDeptId(0);

@@ -3,6 +3,8 @@ package com.neuedu.pojo;
 public class ForeignLanguages extends MyPage{
     private Integer id;
 
+    private Integer empId;
+
     private Integer languages;
 
     private Integer proficiency;
@@ -19,6 +21,14 @@ public class ForeignLanguages extends MyPage{
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(Integer empId) {
+        this.empId = empId;
     }
 
     public Integer getLanguages() {

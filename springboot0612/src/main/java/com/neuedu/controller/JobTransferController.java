@@ -18,7 +18,7 @@ public class JobTransferController {
     EmpService empService;
     @PostMapping("/add")
     public int update(JobTransfer jobTransfer){
-        int i=empService.updateDept(jobTransfer.getEmpId(),jobTransfer.getAfterJob());
+        int i=empService.updateJob(jobTransfer.getEmpId(),jobTransfer.getAfterJob());
         return jobTransferService.add(jobTransfer);
     }
 }

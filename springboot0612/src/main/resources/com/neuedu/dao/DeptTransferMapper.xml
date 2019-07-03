@@ -11,6 +11,25 @@
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
     <result column="tran_date" jdbcType="DATE" property="tranDate" />
   </resultMap>
+  <resultMap id="WithEmpMap" type="com.neuedu.pojo.DeptTransfer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="emp_id" jdbcType="INTEGER" property="empId" />
+    <result column="before_dept" jdbcType="INTEGER" property="beforeDept" />
+    <result column="after_dept" jdbcType="INTEGER" property="afterDept" />
+    <result column="tran_type" jdbcType="INTEGER" property="tranType" />
+    <result column="tran_reason" jdbcType="VARCHAR" property="tranReason" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="tran_date" jdbcType="DATE" property="tranDate" />
+    <association property="emp" javaType="com.neuedu.pojo.Emp">
+      <id column="e_id" property="eId"/>
+      <result column="name" property="name"/>
+      <result column="sex" property="sex"/>
+    </association>
+    <association property="dept" javaType="com.neuedu.pojo.Dept">
+      <id column="d_id" property="dId"/>
+      <result column="dept_name" property="deptName"/>
+    </association>
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -72,6 +91,10 @@
   <sql id="Base_Column_List">
     id, emp_id, before_dept, after_dept, tran_type, tran_reason, remarks, tran_date
   </sql>
+  <sql id="WithEmp_Column_List">
+    id, emp_id, before_dept, after_dept, tran_type, tran_reason, remarks, tran_date,
+    emp.name, emp.sex, dept.dept_name
+  </sql>
   <select id="selectByExample" parameterType="com.neuedu.pojo.DeptTransferExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -79,6 +102,38 @@
     </if>
     <include refid="Base_Column_List" />
     from dept_transfer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExampleWithEmp" resultMap="WithEmpMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="WithEmp_Column_List" />
+    from dept_transfer
+    left join emp on dept_transfer.emp_id=emp.e_id
+    left join dept on dept_transfer.before_dept=dept.d_id
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExampleWithEmpAfter" resultMap="WithEmpMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="WithEmp_Column_List" />
+    from dept_transfer
+    left join emp on dept_transfer.emp_id=emp.e_id
+    left join dept on dept_transfer.after_dept=dept.d_id
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>

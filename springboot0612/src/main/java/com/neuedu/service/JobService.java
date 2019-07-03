@@ -11,4 +11,5 @@ public interface JobService {
     int add(Job job);
     int del(Job job);
     int update(Job job);
+
 }

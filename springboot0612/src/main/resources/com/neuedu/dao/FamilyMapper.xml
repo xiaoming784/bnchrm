@@ -3,11 +3,12 @@
 <mapper namespace="com.neuedu.dao.FamilyMapper">
   <resultMap id="BaseResultMap" type="com.neuedu.pojo.Family">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="emp_id" jdbcType="INTEGER" property="empId" />
     <result column="relationship" jdbcType="INTEGER" property="relationship" />
     <result column="rela_name" jdbcType="VARCHAR" property="relaName" />
     <result column="unit" jdbcType="VARCHAR" property="unit" />
     <result column="post" jdbcType="VARCHAR" property="post" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="phone" jdbcType="INTEGER" property="phone" />
     <result column="dept_id" jdbcType="INTEGER" property="deptId" />
     <result column="emp_name" jdbcType="VARCHAR" property="empName" />
     <result column="active" jdbcType="INTEGER" property="active" />
@@ -71,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, relationship, rela_name, unit, post, phone, dept_id, emp_name, active
+    id, emp_id, relationship, rela_name, unit, post, phone, dept_id, emp_name, active
   </sql>
   <select id="selectByExample" parameterType="com.neuedu.pojo.FamilyExample" resultMap="BaseResultMap">
     select
@@ -104,20 +105,23 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.neuedu.pojo.Family">
-    insert into family (id, relationship, rela_name, 
-      unit, post, phone, 
-      dept_id, emp_name, active
-      )
-    values (#{id,jdbcType=INTEGER}, #{relationship,jdbcType=INTEGER}, #{relaName,jdbcType=VARCHAR}, 
-      #{unit,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{deptId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR}, #{active,jdbcType=INTEGER}
-      )
+    insert into family (id, emp_id, relationship, 
+      rela_name, unit, post, 
+      phone, dept_id, emp_name, 
+      active)
+    values (#{id,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, #{relationship,jdbcType=INTEGER}, 
+      #{relaName,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=INTEGER}, #{deptId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR}, 
+      #{active,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.neuedu.pojo.Family">
     insert into family
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
+      </if>
+      <if test="empId != null">
+        emp_id,
       </if>
       <if test="relationship != null">
         relationship,
@@ -148,6 +152,9 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
+      <if test="empId != null">
+        #{empId,jdbcType=INTEGER},
+      </if>
       <if test="relationship != null">
         #{relationship,jdbcType=INTEGER},
       </if>
@@ -161,7 +168,7 @@
         #{post,jdbcType=VARCHAR},
       </if>
       <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
+        #{phone,jdbcType=INTEGER},
       </if>
       <if test="deptId != null">
         #{deptId,jdbcType=INTEGER},
@@ -186,6 +193,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.empId != null">
+        emp_id = #{record.empId,jdbcType=INTEGER},
+      </if>
       <if test="record.relationship != null">
         relationship = #{record.relationship,jdbcType=INTEGER},
       </if>
@@ -199,7 +209,7 @@
         post = #{record.post,jdbcType=VARCHAR},
       </if>
       <if test="record.phone != null">
-        phone = #{record.phone,jdbcType=VARCHAR},
+        phone = #{record.phone,jdbcType=INTEGER},
       </if>
       <if test="record.deptId != null">
         dept_id = #{record.deptId,jdbcType=INTEGER},
@@ -218,11 +228,12 @@
   <update id="updateByExample" parameterType="map">
     update family
     set id = #{record.id,jdbcType=INTEGER},
+      emp_id = #{record.empId,jdbcType=INTEGER},
       relationship = #{record.relationship,jdbcType=INTEGER},
       rela_name = #{record.relaName,jdbcType=VARCHAR},
       unit = #{record.unit,jdbcType=VARCHAR},
       post = #{record.post,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=INTEGER},
       dept_id = #{record.deptId,jdbcType=INTEGER},
       emp_name = #{record.empName,jdbcType=VARCHAR},
       active = #{record.active,jdbcType=INTEGER}
@@ -233,6 +244,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.pojo.Family">
     update family
     <set>
+      <if test="empId != null">
+        emp_id = #{empId,jdbcType=INTEGER},
+      </if>
       <if test="relationship != null">
         relationship = #{relationship,jdbcType=INTEGER},
       </if>
@@ -246,7 +260,7 @@
         post = #{post,jdbcType=VARCHAR},
       </if>
       <if test="phone != null">
-        phone = #{phone,jdbcType=VARCHAR},
+        phone = #{phone,jdbcType=INTEGER},
       </if>
       <if test="deptId != null">
         dept_id = #{deptId,jdbcType=INTEGER},
@@ -262,11 +276,12 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.neuedu.pojo.Family">
     update family
-    set relationship = #{relationship,jdbcType=INTEGER},
+    set emp_id = #{empId,jdbcType=INTEGER},
+      relationship = #{relationship,jdbcType=INTEGER},
       rela_name = #{relaName,jdbcType=VARCHAR},
       unit = #{unit,jdbcType=VARCHAR},
       post = #{post,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=INTEGER},
       dept_id = #{deptId,jdbcType=INTEGER},
       emp_name = #{empName,jdbcType=VARCHAR},
       active = #{active,jdbcType=INTEGER}

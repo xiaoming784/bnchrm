@@ -50,11 +50,11 @@ public class TableServiceImpl implements TableService {
         return empMapper.selectByExampleWithDept(empExample);
     }
 
-    @Override
+/*    @Override
     public int add(Emp emp) {
         emp.setCreateData(new Date());
         return empMapper.insertSelective(emp);
-    }
+    }*/
 
     @Override
     public List<Emp> getQuitEmps(Emp emp) {
@@ -70,6 +70,7 @@ public class TableServiceImpl implements TableService {
         PageHelper.startPage(quit.getPageNo(), quit.getPageSize());
         QuitExample quitExample = new QuitExample();
         QuitExample.Criteria criteria = quitExample.createCriteria();
+        criteria.andQuitDateIsNotNull();
         //Emp emp = quit.getEmp();
         System.out.println("--------------"+quit.getQuitDate());
         //System.out.println("--------------"+quit.getEmp().getDeptId());

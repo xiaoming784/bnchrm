@@ -3,6 +3,8 @@ package com.neuedu.dao;
 import com.neuedu.pojo.Quit;
 import com.neuedu.pojo.QuitExample;
 import java.util.List;
+
+import com.neuedu.pojo.QuitWang;
 import org.apache.ibatis.annotations.Param;
 
 public interface QuitMapper {
@@ -10,15 +12,17 @@ public interface QuitMapper {
 
     int deleteByExample(QuitExample example);
 
-    int deleteByPrimaryKey(Integer qId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(Quit record);
 
-    int insertSelective(Quit record);
+    int insertSelective(QuitWang record);
 
     List<Quit> selectByExample(QuitExample example);
 
-    Quit selectByPrimaryKey(Integer qId);
+    List<Quit> selectByExampleWithEmp(QuitExample example);
+
+    Quit selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Quit record, @Param("example") QuitExample example);
 

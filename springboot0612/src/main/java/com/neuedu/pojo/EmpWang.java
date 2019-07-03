@@ -2,8 +2,18 @@ package com.neuedu.pojo;
 
 import java.util.Date;
 
-public class Emp extends MyPage{
+public class EmpWang extends MyPage{
     private Integer eId;
+
+    private Integer empId;
+
+    public Integer getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(Integer empId) {
+        this.empId = empId;
+    }
 
     private String name;
 
@@ -63,33 +73,9 @@ public class Emp extends MyPage{
 
     private Integer results;
 
-    private Dept dept;
-
-    private Job job;
-
-    private Dept deptInfo;
-
-    private Job jobInfo;
-
     private HandleTrial handleTrial;
 
     private DeptTransfer deptTransfer;
-
-    public Dept getDeptInfo() {
-        return deptInfo;
-    }
-
-    public void setDeptInfo(Dept deptInfo) {
-        this.deptInfo = deptInfo;
-    }
-
-    public Job getJobInfo() {
-        return jobInfo;
-    }
-
-    public void setJobInfo(Job jobInfo) {
-        this.jobInfo = jobInfo;
-    }
 
     public HandleTrial getHandleTrial() {
         return handleTrial;
@@ -105,22 +91,6 @@ public class Emp extends MyPage{
 
     public void setDeptTransfer(DeptTransfer deptTransfer) {
         this.deptTransfer = deptTransfer;
-    }
-
-    public Job getJob() {
-        return job;
-    }
-
-    public void setJob(Job job) {
-        this.job = job;
-    }
-
-    public Dept getDept() {
-        return dept;
-    }
-
-    public void setDept(Dept dept) {
-        this.dept = dept;
     }
 
     public Date getCreateDataSearch() {

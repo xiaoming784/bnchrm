@@ -7,7 +7,7 @@ import java.util.List;
 public interface TableService {
     List<Emp> getEmps(Emp emp);
 
-    int add(Emp emp);
+    //int add(Emp emp);
 
     List<Emp> getQuitEmps(Emp emp);
 

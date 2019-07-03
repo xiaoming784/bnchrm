@@ -164,73 +164,73 @@ public class JobExample {
             return (Criteria) this;
         }
 
-        public Criteria andNameIsNull() {
-            addCriterion("name is null");
+        public Criteria andJobNameIsNull() {
+            addCriterion("job_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andNameIsNotNull() {
-            addCriterion("name is not null");
+        public Criteria andJobNameIsNotNull() {
+            addCriterion("job_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andNameEqualTo(String value) {
-            addCriterion("name =", value, "name");
+        public Criteria andJobNameEqualTo(String value) {
+            addCriterion("job_name =", value, "jobName");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotEqualTo(String value) {
-            addCriterion("name <>", value, "name");
+        public Criteria andJobNameNotEqualTo(String value) {
+            addCriterion("job_name <>", value, "jobName");
             return (Criteria) this;
         }
 
-        public Criteria andNameGreaterThan(String value) {
-            addCriterion("name >", value, "name");
+        public Criteria andJobNameGreaterThan(String value) {
+            addCriterion("job_name >", value, "jobName");
             return (Criteria) this;
         }
 
-        public Criteria andNameGreaterThanOrEqualTo(String value) {
-            addCriterion("name >=", value, "name");
+        public Criteria andJobNameGreaterThanOrEqualTo(String value) {
+            addCriterion("job_name >=", value, "jobName");
             return (Criteria) this;
         }
 
-        public Criteria andNameLessThan(String value) {
-            addCriterion("name <", value, "name");
+        public Criteria andJobNameLessThan(String value) {
+            addCriterion("job_name <", value, "jobName");
             return (Criteria) this;
         }
 
-        public Criteria andNameLessThanOrEqualTo(String value) {
-            addCriterion("name <=", value, "name");
+        public Criteria andJobNameLessThanOrEqualTo(String value) {
+            addCriterion("job_name <=", value, "jobName");
             return (Criteria) this;
         }
 
-        public Criteria andNameLike(String value) {
-            addCriterion("name like", value, "name");
+        public Criteria andJobNameLike(String value) {
+            addCriterion("job_name like", value, "jobName");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotLike(String value) {
-            addCriterion("name not like", value, "name");
+        public Criteria andJobNameNotLike(String value) {
+            addCriterion("job_name not like", value, "jobName");
             return (Criteria) this;
         }
 
-        public Criteria andNameIn(List<String> values) {
-            addCriterion("name in", values, "name");
+        public Criteria andJobNameIn(List<String> values) {
+            addCriterion("job_name in", values, "jobName");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotIn(List<String> values) {
-            addCriterion("name not in", values, "name");
+        public Criteria andJobNameNotIn(List<String> values) {
+            addCriterion("job_name not in", values, "jobName");
             return (Criteria) this;
         }
 
-        public Criteria andNameBetween(String value1, String value2) {
-            addCriterion("name between", value1, value2, "name");
+        public Criteria andJobNameBetween(String value1, String value2) {
+            addCriterion("job_name between", value1, value2, "jobName");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotBetween(String value1, String value2) {
-            addCriterion("name not between", value1, value2, "name");
+        public Criteria andJobNameNotBetween(String value1, String value2) {
+            addCriterion("job_name not between", value1, value2, "jobName");
             return (Criteria) this;
         }
 

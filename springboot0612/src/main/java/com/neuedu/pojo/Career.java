@@ -5,6 +5,10 @@ import java.util.Date;
 public class Career extends MyPage{
     private Integer id;
 
+    private Integer deptId;
+
+    private String empName;
+
     private Date beginData;
 
     private Date endData;
@@ -25,10 +29,6 @@ public class Career extends MyPage{
 
     private String remarks;
 
-    private Integer deptId;
-
-    private String empName;
-
     private Integer active;
 
     public Integer getId() {
@@ -37,6 +37,22 @@ public class Career extends MyPage{
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
+    }
+
+    public String getEmpName() {
+        return empName;
+    }
+
+    public void setEmpName(String empName) {
+        this.empName = empName == null ? null : empName.trim();
     }
 
     public Date getBeginData() {
@@ -117,22 +133,6 @@ public class Career extends MyPage{
 
     public void setRemarks(String remarks) {
         this.remarks = remarks == null ? null : remarks.trim();
-    }
-
-    public Integer getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
-    }
-
-    public String getEmpName() {
-        return empName;
-    }
-
-    public void setEmpName(String empName) {
-        this.empName = empName == null ? null : empName.trim();
     }
 
     public Integer getActive() {

@@ -12,4 +12,3 @@ public interface HandleTrialService {
     int del(HandleTrial handleTrial);
     int update(HandleTrial handleTrial);
 }
-

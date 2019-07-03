@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class ForeignLanguagesServiceImpl implements ForeignLanguagesService {
     @Resource
-    @Autowired
+    //@Autowired
     ForeignLanguagesMapper foreignLanguagesMapper;
     @Resource
     EmpMapper empMapper;
@@ -31,11 +31,17 @@ public class ForeignLanguagesServiceImpl implements ForeignLanguagesService {
         List<ForeignLanguages> foreignLanguagess = foreignLanguagesMapper.selectByExample(foreignLanguagesExample);
         for (ForeignLanguages foreignLanguages2:foreignLanguagess) {
             Emp emp =  empMapper.selectByPrimaryKey(foreignLanguages2.getId());
-            if (emp != null && emp.getName() != null && emp.getDept() !=null) {
+            System.out.println("---------------"+foreignLanguages2.getId());
+            System.out.println("------------"+emp.getName());
+            System.out.println("----------"+emp.getDeptId());
+            if (emp != null && emp.getName() != null && emp.getDeptId() != null) {
+                System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                 String empName = empMapper.selectByPrimaryKey(foreignLanguages2.getId()).getName();
-                Integer deptId = empMapper.selectByPrimaryKey(foreignLanguages2.getId()).getDept();
+                Integer deptId = empMapper.selectByPrimaryKey(foreignLanguages2.getId()).getDeptId();
+                System.out.println("-=-=-===-=========="+empName+deptId);
                 foreignLanguages2.setEmpName(empName);
                 foreignLanguages2.setDeptId(deptId);
+                System.out.println("----=-=-=-=-=-"+foreignLanguages2.getDeptId()+foreignLanguages2.getEmpName());
             } else {
                 foreignLanguages2.setEmpName("无此员工");
                 foreignLanguages2.setDeptId(0);
